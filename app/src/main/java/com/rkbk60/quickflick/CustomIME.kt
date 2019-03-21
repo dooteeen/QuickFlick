@@ -1,7 +1,6 @@
 package com.rkbk60.quickflick
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.KeyboardView
 import android.view.MotionEvent

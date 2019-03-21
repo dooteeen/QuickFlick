@@ -13,22 +13,6 @@ class DocumentActivity : AppCompatActivity() {
 
     private var webView: WebView? = null
 
-    private val webClientForLollipop = object : WebViewClient() {
-        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-        override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-            view?.loadUrl(request?.url?.toString())
-            return true
-        }
-    }
-
-    private val webClientForKitkat = object : WebViewClient() {
-        @Suppress("OverridingDeprecatedMember")
-        override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-            view?.loadUrl(url)
-            return true
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_document)
@@ -46,9 +30,21 @@ class DocumentActivity : AppCompatActivity() {
             setTitle(title)
             settings.builtInZoomControls = zoomable
             webViewClient = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                webClientForLollipop
+                object : WebViewClient() {
+                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                    override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                        view?.loadUrl(request?.url?.toString())
+                        return true
+                    }
+                }
             } else {
-                webClientForKitkat
+                object : WebViewClient() {
+                    @Suppress("OverridingDeprecatedMember")
+                    override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                        view?.loadUrl(url)
+                        return true
+                    }
+                }
             }
             loadUrl("file:///android_asset/$file")
         }

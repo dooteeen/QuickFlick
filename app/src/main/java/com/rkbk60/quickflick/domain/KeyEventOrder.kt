@@ -18,7 +18,7 @@ class KeyEventOrder(private var key: KeyInfo = KeyInfo.NULL, mods: Set<ModKeyInf
     private lateinit var postInputOrders: List<Unit>
     private lateinit var mainInputOrders: List<Unit>
 
-    private var lastMeta = mods.fold(0, { acc, mod -> acc or mod.meta })
+    private var lastMeta = mods.fold(0) { acc, mod -> acc or mod.meta }
 
     val mainKey: KeyInfo
         get() = key
@@ -63,7 +63,7 @@ class KeyEventOrder(private var key: KeyInfo = KeyInfo.NULL, mods: Set<ModKeyInf
     }
 
     private fun setModsInputOrders(mods: Set<ModKeyInfo>) {
-        val modsList: List<Pair<ModKeyInfo, Int>> = mods.fold(listOf(), { list, mod ->
+        val modsList: List<Pair<ModKeyInfo, Int>> = mods.fold(listOf()) { list, mod ->
             if (list.isEmpty()) {
                 listOf(Pair(mod, 0))
             } else {
@@ -71,7 +71,7 @@ class KeyEventOrder(private var key: KeyInfo = KeyInfo.NULL, mods: Set<ModKeyInf
                         Pair(mod, list.last().first.meta or list.last().second)
                 ).toList()
             }
-        })
+        }
         preInputOrders = modsList.map {
             Unit(true, it.first.code, it.first.meta or it.second)
         }

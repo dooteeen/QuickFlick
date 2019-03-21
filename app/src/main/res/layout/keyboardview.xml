@@ -6,6 +6,5 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:keyTextSize="15sp"
-    android:keyPreviewLayout="@layout/popuppreview"
     android:keyBackground="@drawable/key"
     android:background="@color/backgroundKey" />

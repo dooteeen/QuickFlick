@@ -92,7 +92,7 @@ class ArrowKeyTest {
 
     private fun counterObject(applyInThread: ArrowKey.() -> Unit): Int {
         var c = 0
-        val a = ArrowKey { _ -> c++ }
+        val a = ArrowKey { c++ }
         try {
             a.apply(applyInThread)
         } catch (e: java.lang.Exception) {
@@ -110,7 +110,7 @@ class ArrowKeyTest {
     private fun getCountTestParams(second: Int): Pair<Long, Int> {
         val ms = second * 1000
         return ms.toLong() to
-                2 + (ms - RepeatingInputRunner.DELAY_TIME) / RepeatingInputRunner.REPEATING_TIME
+                (2 + (ms - RepeatingInputRunner.DELAY_TIME) / RepeatingInputRunner.REPEATING_TIME).toInt()
     }
 
     private fun <T> ArrowKey.runSafely(run: ArrowKey.() -> T): T? {

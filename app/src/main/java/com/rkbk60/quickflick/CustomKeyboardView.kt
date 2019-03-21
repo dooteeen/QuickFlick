@@ -37,28 +37,30 @@ class CustomKeyboardView(context: Context, attrs: AttributeSet) : KeyboardView(c
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        indicator?.draw(canvas)
+        if (canvas is Canvas) {
+            indicator?.draw(canvas)
 
-        // draw borderlines
-        val keys = keyboard?.keys
-                ?.filter { KeyIndex.isNextToFunction(it.codes[0]) }
-                ?.take(2)
-                ?: return
-        val borderWidth = 2
-        val top    = { key: Keyboard.Key -> (key.y + 0.05 * keyboard.height).toInt() }
-        val bottom = { key: Keyboard.Key -> (key.y + 4 * key.height + 4) }
-        if (isLayoutForRightHand) {
-            keys[0]?.also { // Esc key
-                borderLeft.apply {
-                    setBounds(it.x, top(it), it.x + borderWidth, bottom(it))
-                    draw(canvas)
+            // draw borderlines
+            val keys = keyboard?.keys
+                    ?.filter { KeyIndex.isNextToFunction(it.codes[0]) }
+                    ?.take(2)
+                    ?: return
+            val borderWidth = 2
+            val top    = { key: Keyboard.Key -> (key.y + 0.05 * keyboard.height).toInt() }
+            val bottom = { key: Keyboard.Key -> (key.y + 4 * key.height + 4) }
+            if (isLayoutForRightHand) {
+                keys[0]?.also { // Esc key
+                    borderLeft.apply {
+                        setBounds(it.x, top(it), it.x + borderWidth, bottom(it))
+                        draw(canvas)
+                    }
                 }
-            }
-        } else {
-            keys[1]?.also { // Tab/Enter key
-                borderRight.apply {
-                    setBounds(it.x + it.width - borderWidth, top(it), it.x + it.width, bottom(it))
-                    draw(canvas)
+            } else {
+                keys[1]?.also { // Tab/Enter key
+                    borderRight.apply {
+                        setBounds(it.x + it.width - borderWidth, top(it), it.x + it.width, bottom(it))
+                        draw(canvas)
+                    }
                 }
             }
         }

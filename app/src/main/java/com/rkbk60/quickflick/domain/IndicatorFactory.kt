@@ -3,7 +3,7 @@ package com.rkbk60.quickflick.domain
 import android.graphics.drawable.BitmapDrawable
 import com.rkbk60.quickflick.model.Flick
 
-class IndicatorFactory(var backgrounds: BackgroundDrawables) {
+class IndicatorFactory(private var backgrounds: BackgroundDrawables) {
     /**
      * Set of indicator background drawables.
      */

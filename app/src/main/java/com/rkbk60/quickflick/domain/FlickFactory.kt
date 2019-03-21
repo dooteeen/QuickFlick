@@ -4,7 +4,6 @@ import com.rkbk60.quickflick.model.Flick
 
 /**
  * Class to construct Flick object more safety and more accurately.
- * @param server object implemented FlickFactory.Preference
  */
 class FlickFactory(
         thresholdX1: Int, thresholdX2: Int, thresholdY1: Int, thresholdY2: Int) {

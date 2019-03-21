@@ -2,7 +2,6 @@ package com.rkbk60.quickflick.domain
 
 import com.rkbk60.quickflick.model.AsciiKeyInfo
 import com.rkbk60.quickflick.model.ModKeyInfo
-import java.util.*
 
 /**
  * Arrow key object, managing modes and repeating input.

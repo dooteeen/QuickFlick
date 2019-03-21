@@ -6,7 +6,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.preference.PreferenceManager
 import android.support.annotation.*
 import android.support.v4.content.ContextCompat
-import android.util.Log
 import android.widget.Toast
 
 /**
@@ -47,17 +46,11 @@ abstract class ResourceServerBase(protected val context: Context) {
      * @param default default value
      */
     inner class PreferenceIntText(@StringRes keyId: Int, default: Int) : PreferenceData<Int>(keyId, default) {
-        override val getT = getter@ {
-            try {
-                return@getter preference.getString(key, default.toString()).toInt()
-            } catch (e: java.lang.Exception) {
-                return@getter default
-            }
-        }
+        override val getT = { getCurrentAsString().toInt() }
         override val setT = { value: Int -> editor.putString(key, value.toString()) }
 
         fun getCurrentAsString(): String {
-            return preference.getString(key, default.toString())
+            return preference.getString(key, default.toString()) ?: default.toString()
         }
     }
 
