@@ -2,9 +2,7 @@ package com.rkbk60.quickflick.domain
 
 import com.rkbk60.quickflick.model.KeyInfo
 import com.rkbk60.quickflick.model.ModKeyInfo
-import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.delay
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.*
 
 class RepeatingInputRunner(val inputAtCalling: Boolean,
                            private val action: (KeyEventOrder) -> Unit) {
@@ -20,8 +18,8 @@ class RepeatingInputRunner(val inputAtCalling: Boolean,
     private var isPausing = false
 
     companion object {
-        const val DELAY_TIME = 500    // unit: ms
-        const val REPEATING_TIME = 50 // unit: ms
+        const val DELAY_TIME = 500L    // unit: ms
+        const val REPEATING_TIME = 50L // unit: ms
     }
 
     fun startInput(key: KeyInfo, mods: Set<ModKeyInfo>) {
@@ -32,7 +30,7 @@ class RepeatingInputRunner(val inputAtCalling: Boolean,
             action(order)
         }
         order.changeModKeys(mods.filter { it.lockable }.toSet())
-        job = launch {
+        job = GlobalScope.launch {
             delay(DELAY_TIME)
             while (isActive) {
                 if (!isPausing) {
