@@ -66,6 +66,7 @@ class CustomKeyboardView(context: Context, attrs: AttributeSet) : KeyboardView(c
         }
     }
 
+    // TODO: replace "useFooter" to "footerLevel"
     fun setKeyboardWith(controller:  KeyboardController,
                         isRight:     Boolean,
                         useFooter:   Boolean,

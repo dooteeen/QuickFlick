@@ -20,6 +20,7 @@ class ResourceServer(context: Context) : ResourceServerBase(context) {
 
     val isPortrait = resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
 
+    // TODO: make FooterHeight:ResourceEnum with 5 level and footerHeight(Portrait/Landscape):FooterHeight
     val keyboardHeight
         get() = if (isPortrait) keyboardHeightPortrait else keyboardHeightLandscape
     val keyboardHeightPortrait = PreferenceEnum(

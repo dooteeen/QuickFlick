@@ -6,6 +6,8 @@
         <item>@string/theme_morse</item>
     </string-array>
 
+    <!-- TODO: add string-array that name is "footer_height_list" -->
+
     <string-array name="key_height_list">
         <item>@string/keyboard_height_1</item>
         <item>@string/keyboard_height_2</item>

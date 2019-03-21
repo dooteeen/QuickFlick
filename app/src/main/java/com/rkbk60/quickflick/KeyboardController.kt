@@ -29,6 +29,7 @@ class KeyboardController(private val context: Context) {
      * @param useFooter whether or not device orientation is portrait.
      * @param heightLevel height level (1 ~ 5). If value is out of this range, it will be 2.
      * @return Keyboard instance you wanted
+     * TODO: change from Boolean "useFooter" to Int "footerLevel"
      */
     fun inflateKeyboard(isRight: Boolean    = this.isRight,
                         useFooter: Boolean  = this.isPortrait,
@@ -60,7 +61,7 @@ class KeyboardController(private val context: Context) {
               3 -> R.xml.keyboard_ll3
               2 -> R.xml.keyboard_ll2
               1 -> R.xml.keyboard_ll1
-            else -> R.xml.keyboard_rl2 // default
+            else -> R.xml.keyboard_rl2 // default TODO: change to "keyboard_a2_right"
         })
         this.keyboard = keyboard
         arrowKey = findKey(KeyIndex.INDEX_ARROW)

@@ -1,4 +1,5 @@
 <resources>
+    <!-- TODO: add keyname/labels for footer level -->
     <string name="app_name">QuickFlick</string>
     <string name="app_full_name">QuickFlick Keyboard</string>
     <string name="app_label">Hacking English (US)</string>

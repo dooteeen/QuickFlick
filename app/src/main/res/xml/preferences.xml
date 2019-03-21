@@ -76,6 +76,7 @@
             android:key="@string/preferences_keys_adjustment"
             android:summary="@string/preferences_summary_keys_adjustment"
             android:title="@string/preferences_title_keys_adjustment"/>
+        <!-- TODO: change to ListPreference that title is "Footer height on portrait/landscape" -->
         <SwitchPreference
             android:defaultValue="false"
             android:key="@string/preferences_keyboard_footer"

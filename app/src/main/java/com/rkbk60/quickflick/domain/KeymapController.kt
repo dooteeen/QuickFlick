@@ -178,6 +178,7 @@ class KeymapController {
         keymap.apply {
             clear(KeyIndex.B1)
             put(KeyIndex.B1, Flick.Direction.NONE,  AsciiKeyInfo.ESCAPE)
+            // TODO: put TriggerKeyInfo.CHOOSE_KEYBOARD on up/down
             clear(KeyIndex.F1)
             put(KeyIndex.F1, Flick.Direction.NONE,  AsciiKeyInfo.TAB)
             put(KeyIndex.F1, Flick.Direction.LEFT,  AsciiKeyInfo.SHIFT_TAB)

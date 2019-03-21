@@ -37,6 +37,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
     private var isRight
         get() = rServer.keyboardIsRight.current
         set(value) { rServer.keyboardIsRight.current = value }
+    // TODO: replace "useFooter" to "footerLevel"
     private var useFooter
         get()  = !rServer.isPortrait && rServer.keyboardUseFooter.current
         set(_) = Unit
@@ -218,6 +219,8 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
                 }
             }
         }
+
+        // TODO: add action for TriggerKeyInfo.CHOOSE_KEYBOARD
 
         if (key is AsciiKeyInfo.DirectionKey) {
             if (arrowKey.isStandby || lastAction == MotionEvent.ACTION_UP) {

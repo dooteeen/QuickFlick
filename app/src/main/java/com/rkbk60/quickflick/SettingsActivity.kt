@@ -101,6 +101,7 @@ class SettingsActivity: AppCompatActivity() {
                     "${target.current} thou (Default:${target.default})"
         }
 
+        // TODO: add "updateFooterHeightSummary()"
         private fun updateKeyboardHeightSummary(target: HeightPrefEnum = rServer.keyboardHeightPortrait) {
             val current = target.current
             val subContent = when (current) {
