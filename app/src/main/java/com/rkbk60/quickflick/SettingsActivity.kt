@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.preference.EditTextPreference
 import android.preference.PreferenceFragment
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.preference.PreferenceFragmentCompat
 import android.widget.Toast
 
 /**
  * Settings
+ * TODO: replace to PreferenceFragmentCompat and getSupportFragmentManager
  */
 
 private typealias HeightPrefEnum = ResourceServerBase.PreferenceEnum<ResourceServer.KeyboardHeight>
