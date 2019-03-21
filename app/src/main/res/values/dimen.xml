@@ -9,4 +9,15 @@
     <dimen name="key_height_medium">40dp</dimen>
     <dimen name="key_height_semi_large">44dp</dimen>
     <dimen name="key_height_large">48dp</dimen>
+
+    <dimen name="footer_height_small"
+           tools:ignore="InOrMmUsage">0.06in</dimen>
+    <dimen name="footer_height_semi_small"
+           tools:ignore="InOrMmUsage">0.12in</dimen>
+    <dimen name="footer_height_medium"
+           tools:ignore="InOrMmUsage">40.18in</dimen>
+    <dimen name="footer_height_semi_large"
+           tools:ignore="InOrMmUsage">0.24in</dimen>
+    <dimen name="footer_height_large"
+           tools:ignore="InOrMmUsage">0.30in</dimen>
 </resources>

@@ -16,11 +16,12 @@ class ResourceServer(context: Context) : ResourceServerBase(context) {
     val canCancelFlick = PreferenceBool(R.string.preferences_cancel_flick, true)
     val canCancelInput = PreferenceBool(R.string.preferences_cancel_input, false)
     val keyboardIsRight = PreferenceBool(R.string.preferences_keys_adjustment, false)
-    val keyboardUseFooter = PreferenceBool(R.string.preferences_keyboard_footer, false)
 
-    val isPortrait = resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
+    val isPortrait: Boolean
+            get() {
+                return resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
+            }
 
-    // TODO: make FooterHeight:ResourceEnum with 5 level and footerHeight(Portrait/Landscape):FooterHeight
     val keyboardHeight
         get() = if (isPortrait) keyboardHeightPortrait else keyboardHeightLandscape
     val keyboardHeightPortrait = PreferenceEnum(
@@ -36,6 +37,32 @@ class ResourceServer(context: Context) : ResourceServerBase(context) {
             Lv3 -> R.string.keyboard_height_3
             Lv4 -> R.string.keyboard_height_4
             Lv5 -> R.string.keyboard_height_5
+        }
+
+        fun toInt(): Int = when (this) {
+            Lv1 -> 1
+            Lv2 -> 2
+            Lv3 -> 3
+            Lv4 -> 4
+            Lv5 -> 5
+        }
+    }
+
+    val footerHeight
+        get() = if (isPortrait) footerHeightPortrait else footerHeightLandscape
+    val footerHeightPortrait = PreferenceEnum(
+            R.string.preferences_keyboard_footer_size, FooterHeight.Lv2, enumValues())
+    val footerHeightLandscape = PreferenceEnum(
+            R.string.preferences_keyboard_footer_size_landscape, FooterHeight.Lv4, enumValues())
+    enum class FooterHeight : ResourceEnum {
+        Lv1, Lv2, Lv3, Lv4, Lv5;
+
+        override fun toResourceId(): Int = when (this) {
+            Lv1 -> R.string.footer_height_1
+            Lv2 -> R.string.footer_height_2
+            Lv3 -> R.string.footer_height_3
+            Lv4 -> R.string.footer_height_4
+            Lv5 -> R.string.footer_height_5
         }
 
         fun toInt(): Int = when (this) {

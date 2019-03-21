@@ -37,9 +37,8 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
     private var isRight
         get() = rServer.keyboardIsRight.current
         set(value) { rServer.keyboardIsRight.current = value }
-    // TODO: replace "useFooter" to "footerLevel"
-    private var useFooter
-        get()  = !rServer.isPortrait && rServer.keyboardUseFooter.current
+    private var footerLevel
+        get()  = rServer.footerHeight.current.toInt()
         set(_) = Unit
     private var heightLevel
         get()  = rServer.keyboardHeight.current.toInt()
@@ -61,7 +60,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
     override fun onCreateInputView(): View {
         keyboardView = layoutInflater.inflate(R.layout.keyboardview, null) as CustomKeyboardView
         return keyboardView.apply {
-            setKeyboardWith(keyboardController, isRight, useFooter, heightLevel)
+            setKeyboardWith(keyboardController, isRight, footerLevel, heightLevel)
             isPreviewEnabled = false
             setOnCloseListener {
                 arrowKey.stopInput()

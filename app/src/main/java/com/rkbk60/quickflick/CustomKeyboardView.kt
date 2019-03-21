@@ -66,12 +66,11 @@ class CustomKeyboardView(context: Context, attrs: AttributeSet) : KeyboardView(c
         }
     }
 
-    // TODO: replace "useFooter" to "footerLevel"
     fun setKeyboardWith(controller:  KeyboardController,
                         isRight:     Boolean,
-                        useFooter:   Boolean,
+                        footerLevel: Int,
                         heightLevel: Int) {
-        keyboard = controller.inflateKeyboard(isRight, useFooter, heightLevel)
+        keyboard = controller.inflateKeyboard(isRight, footerLevel, heightLevel)
         isLayoutForRightHand = isRight
     }
 

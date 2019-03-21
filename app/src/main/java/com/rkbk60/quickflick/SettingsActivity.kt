@@ -13,7 +13,8 @@ import android.widget.Toast
  * TODO: replace to PreferenceFragmentCompat and getSupportFragmentManager
  */
 
-private typealias HeightPrefEnum = ResourceServerBase.PreferenceEnum<ResourceServer.KeyboardHeight>
+private typealias KHeightPrefEnum = ResourceServerBase.PreferenceEnum<ResourceServer.KeyboardHeight>
+private typealias FHeightPrefEnum = ResourceServerBase.PreferenceEnum<ResourceServer.FooterHeight>
 
 class SettingsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,8 @@ class SettingsActivity: AppCompatActivity() {
             updateThemeSummary()
             updateKeyboardHeightSummary(rServer.keyboardHeightPortrait)
             updateKeyboardHeightSummary(rServer.keyboardHeightLandscape)
+            updateFooterHeightSummary(rServer.footerHeightPortrait)
+            updateFooterHeightSummary(rServer.footerHeightLandscape)
         }
 
         override fun onPause() {
@@ -75,6 +78,12 @@ class SettingsActivity: AppCompatActivity() {
                     keyboardHeightLandscape.key -> {
                         updateKeyboardHeightSummary(keyboardHeightLandscape)
                     }
+                    footerHeightPortrait.key -> {
+                        updateFooterHeightSummary(footerHeightPortrait)
+                    }
+                    footerHeightLandscape.key -> {
+                        updateFooterHeightSummary(footerHeightLandscape)
+                    }
                     indicatorTheme.key -> {
                         updateThemeSummary()
                     }
@@ -103,8 +112,7 @@ class SettingsActivity: AppCompatActivity() {
                     "${target.current} thou (Default:${target.default})"
         }
 
-        // TODO: add "updateFooterHeightSummary()"
-        private fun updateKeyboardHeightSummary(target: HeightPrefEnum = rServer.keyboardHeightPortrait) {
+        private fun updateKeyboardHeightSummary(target: KHeightPrefEnum = rServer.keyboardHeightPortrait) {
             val current = target.current
             val subContent = when (current) {
                 ResourceServer.KeyboardHeight.Lv1 -> "smallest"
@@ -112,6 +120,19 @@ class SettingsActivity: AppCompatActivity() {
                 ResourceServer.KeyboardHeight.Lv3 -> "medium"
                 ResourceServer.KeyboardHeight.Lv4 -> "large"
                 ResourceServer.KeyboardHeight.Lv5 -> "largest"
+            }
+            findPreference(target.key).summary =
+                    "Level ${current.toInt()} ($subContent)"
+        }
+
+        private fun updateFooterHeightSummary(target: FHeightPrefEnum = rServer.footerHeightPortrait) {
+            val current = target.current
+            val subContent = when (current) {
+                ResourceServer.FooterHeight.Lv1 -> "60 thou"
+                ResourceServer.FooterHeight.Lv2 -> "120 thou"
+                ResourceServer.FooterHeight.Lv3 -> "180 thou"
+                ResourceServer.FooterHeight.Lv4 -> "240 thou"
+                ResourceServer.FooterHeight.Lv5 -> "360 thou"
             }
             findPreference(target.key).summary =
                     "Level ${current.toInt()} ($subContent)"

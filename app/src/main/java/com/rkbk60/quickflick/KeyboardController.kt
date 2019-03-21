@@ -18,50 +18,76 @@ class KeyboardController(private val context: Context) {
 
     var isRight = true
         private set
-    var isPortrait = true
+    var footerLevel = 2
         private set
-    var heightLevel = 3
+    var heightLevel = 2
         private set
 
     /**
      * Constructs keyboard instance.
      * @param isRight whether or not keyboard layout is for right hand one.
-     * @param useFooter whether or not device orientation is portrait.
+     * @param footerLevel footer height level (1 ~ 5).
      * @param heightLevel height level (1 ~ 5). If value is out of this range, it will be 2.
      * @return Keyboard instance you wanted
-     * TODO: change from Boolean "useFooter" to Int "footerLevel"
      */
-    fun inflateKeyboard(isRight: Boolean    = this.isRight,
-                        useFooter: Boolean  = this.isPortrait,
-                        heightLevel: Int    = this.heightLevel): Keyboard {
+    fun inflateKeyboard(isRight: Boolean = this.isRight,
+                        footerLevel: Int = this.footerLevel,
+                        heightLevel: Int = this.heightLevel): Keyboard {
         this.isRight = isRight
-        this.isPortrait = useFooter
+        this.footerLevel = footerLevel
         this.heightLevel = heightLevel
-        val intIsRight = if (isRight) 1 else 0
-        val intUseFooter = if (useFooter) 1 else 0
-        val fixedHeightLevel = if (heightLevel in 1..5) heightLevel else 3
-        val keyboard = Keyboard(context, when(100 * intIsRight + 10 * intUseFooter + fixedHeightLevel) {
-            115 -> R.xml.keyboard_rh5
-            114 -> R.xml.keyboard_rh4
-            113 -> R.xml.keyboard_rh3
-            112 -> R.xml.keyboard_rh2
-            111 -> R.xml.keyboard_rh1
-            105 -> R.xml.keyboard_rl5
-            104 -> R.xml.keyboard_rl4
-            103 -> R.xml.keyboard_rl3
-            102 -> R.xml.keyboard_rl2
-            101 -> R.xml.keyboard_rl1
-             15 -> R.xml.keyboard_lh5
-             14 -> R.xml.keyboard_lh4
-             13 -> R.xml.keyboard_lh3
-             12 -> R.xml.keyboard_lh2
-             11 -> R.xml.keyboard_lh1
-              5 -> R.xml.keyboard_ll5
-              4 -> R.xml.keyboard_ll4
-              3 -> R.xml.keyboard_ll3
-              2 -> R.xml.keyboard_ll2
-              1 -> R.xml.keyboard_ll1
-            else -> R.xml.keyboard_rl2 // default TODO: change to "keyboard_a2_right"
+        val keyboard = Keyboard(context, when(Triple(isRight, footerLevel, heightLevel)) {
+            Triple(true, 1, 1) -> R.xml.keyboard_a1_right
+            Triple(true, 1, 2) -> R.xml.keyboard_a2_right
+            Triple(true, 1, 3) -> R.xml.keyboard_a3_right
+            Triple(true, 1, 4) -> R.xml.keyboard_a4_right
+            Triple(true, 1, 5) -> R.xml.keyboard_a5_right
+            Triple(true, 2, 1) -> R.xml.keyboard_b1_right
+            Triple(true, 2, 2) -> R.xml.keyboard_b2_right // default
+            Triple(true, 2, 3) -> R.xml.keyboard_b3_right
+            Triple(true, 2, 4) -> R.xml.keyboard_b4_right
+            Triple(true, 2, 5) -> R.xml.keyboard_b5_right
+            Triple(true, 3, 1) -> R.xml.keyboard_c1_right
+            Triple(true, 3, 2) -> R.xml.keyboard_c2_right
+            Triple(true, 3, 3) -> R.xml.keyboard_c3_right
+            Triple(true, 3, 4) -> R.xml.keyboard_c4_right
+            Triple(true, 3, 5) -> R.xml.keyboard_c5_right
+            Triple(true, 4, 1) -> R.xml.keyboard_d1_right
+            Triple(true, 4, 2) -> R.xml.keyboard_d2_right
+            Triple(true, 4, 3) -> R.xml.keyboard_d3_right
+            Triple(true, 4, 4) -> R.xml.keyboard_d4_right
+            Triple(true, 4, 5) -> R.xml.keyboard_d5_right
+            Triple(true, 5, 1) -> R.xml.keyboard_e1_right
+            Triple(true, 5, 2) -> R.xml.keyboard_e2_right
+            Triple(true, 5, 3) -> R.xml.keyboard_e3_right
+            Triple(true, 5, 4) -> R.xml.keyboard_e4_right
+            Triple(true, 5, 5) -> R.xml.keyboard_e5_right
+            Triple(false, 1, 1) -> R.xml.keyboard_a1_left
+            Triple(false, 1, 2) -> R.xml.keyboard_a2_left
+            Triple(false, 1, 3) -> R.xml.keyboard_a3_left
+            Triple(false, 1, 4) -> R.xml.keyboard_a4_left
+            Triple(false, 1, 5) -> R.xml.keyboard_a5_left
+            Triple(false, 2, 1) -> R.xml.keyboard_b1_left
+            Triple(false, 2, 2) -> R.xml.keyboard_b2_left
+            Triple(false, 2, 3) -> R.xml.keyboard_b3_left
+            Triple(false, 2, 4) -> R.xml.keyboard_b4_left
+            Triple(false, 2, 5) -> R.xml.keyboard_b5_left
+            Triple(false, 3, 1) -> R.xml.keyboard_c1_left
+            Triple(false, 3, 2) -> R.xml.keyboard_c2_left
+            Triple(false, 3, 3) -> R.xml.keyboard_c3_left
+            Triple(false, 3, 4) -> R.xml.keyboard_c4_left
+            Triple(false, 3, 5) -> R.xml.keyboard_c5_left
+            Triple(false, 4, 1) -> R.xml.keyboard_d1_left
+            Triple(false, 4, 2) -> R.xml.keyboard_d2_left
+            Triple(false, 4, 3) -> R.xml.keyboard_d3_left
+            Triple(false, 4, 4) -> R.xml.keyboard_d4_left
+            Triple(false, 4, 5) -> R.xml.keyboard_d5_left
+            Triple(false, 5, 1) -> R.xml.keyboard_e1_left
+            Triple(false, 5, 2) -> R.xml.keyboard_e2_left
+            Triple(false, 5, 3) -> R.xml.keyboard_e3_left
+            Triple(false, 5, 4) -> R.xml.keyboard_e4_left
+            Triple(false, 5, 5) -> R.xml.keyboard_e5_left
+            else -> R.xml.keyboard_b2_right
         })
         this.keyboard = keyboard
         arrowKey = findKey(KeyIndex.INDEX_ARROW)

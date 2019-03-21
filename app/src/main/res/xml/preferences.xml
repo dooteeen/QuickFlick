@@ -71,18 +71,25 @@
             android:entries="@array/key_height_list"
             android:entryValues="@array/key_height_list">
         </ListPreference>
+        <ListPreference
+            android:defaultValue="@string/footer_height_2"
+            android:key="@string/preferences_keyboard_footer_size"
+            android:title="@string/preferences_title_keyboard_footer_size"
+            android:entries="@array/footer_height_list"
+            android:entryValues="@array/footer_height_list">
+        </ListPreference>
+        <ListPreference
+            android:defaultValue="@string/footer_height_2"
+            android:key="@string/preferences_keyboard_footer_size_landscape"
+            android:title="@string/preferences_title_keyboard_footer_size_landscape"
+            android:entries="@array/footer_height_list"
+            android:entryValues="@array/footer_height_list">
+        </ListPreference>
         <SwitchPreference
             android:defaultValue="true"
             android:key="@string/preferences_keys_adjustment"
             android:summary="@string/preferences_summary_keys_adjustment"
             android:title="@string/preferences_title_keys_adjustment"/>
-        <!-- TODO: change to ListPreference that title is "Footer height on portrait/landscape" -->
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="@string/preferences_keyboard_footer"
-            android:title="@string/preferences_title_keyboard_footer"
-            android:summary="@string/preferences_summary_keyboard_footer">
-        </SwitchPreference>
     </PreferenceCategory>
     
     <PreferenceCategory android:title="@string/preferences_category_others">

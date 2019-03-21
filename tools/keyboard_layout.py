@@ -21,11 +21,12 @@ class KeyHeight:
 
 
 class FooterHeight:
-    def __init__(self, name: str, value: str) -> None:
+    def __init__(self, name: str, height_level: int) -> None:
         self.name = name
-        self.id = name[0:1].lower()
-        self.value = value
-        self.info = "for %s (footer:%s)" % (name, self.value)
+        alphabets = ["a", "b", "c", "d", "e"]
+        self.id = alphabets[height_level - 1]
+        self.value = "footer_height_" + name
+        self.info = "@dimen/%s (Lv.%s)" % (self.value, height_level)
 
 
 class Adjustment:
@@ -44,8 +45,11 @@ key_heights = [
 ]
 
 footer_heights = [
-    FooterHeight("low", "8dp"),
-    FooterHeight("high", "0.12in")
+    FooterHeight("small", 1),
+    FooterHeight("semi_small", 2),
+    FooterHeight("medium", 3),
+    FooterHeight("semi_large", 4),
+    FooterHeight("large", 5)
 ]
 
 adjustments = [
@@ -55,7 +59,7 @@ adjustments = [
 
 
 if DEBUG_MODE:
-    orders = [(KeyHeight("td", 0), FooterHeight("tf", "10dp"), Adjustment(True))]
+    orders = [(KeyHeight("td", 0), FooterHeight("tf", 3), Adjustment(True))]
 else:
     orders = list(itertools.product(key_heights, footer_heights, adjustments))
 
@@ -73,12 +77,13 @@ for (kh, fh, adj) in orders:
     for newline in template:
         newline = newline.replace("$KEY_HEIGHT_INFO", kh.info)
         newline = newline.replace("$KEY_HEIGHT_VALUE", kh.value)
-        newline = newline.replace("$ORIENTATION_INFO", fh.info)
-        newline = newline.replace("$FOOTER_HEIGHT_DP", fh.value)
+        newline = newline.replace("$FOOTER_INFO", fh.info)
+        newline = newline.replace("$FOOTER_VALUE", fh.value)
         newline = newline.replace("$ADJUSTMENT_INFO", adj.info)
         newtext += newline
     template.close()
-    filename = "keyboard_%s%s%s.xml" % (adj.id, fh.id, kh.id)
+    # filename example: keyboard_b3_right.xml
+    filename = "keyboard_%s%s_%s.xml" % (fh.id, kh.id, adj.name)
     newxml = io.open(output_dir + filename, "w+")
     newxml.write(newtext)
     newxml.close()

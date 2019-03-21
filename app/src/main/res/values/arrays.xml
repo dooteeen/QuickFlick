@@ -6,13 +6,19 @@
         <item>@string/theme_morse</item>
     </string-array>
 
-    <!-- TODO: add string-array that name is "footer_height_list" -->
-
     <string-array name="key_height_list">
         <item>@string/keyboard_height_1</item>
         <item>@string/keyboard_height_2</item>
         <item>@string/keyboard_height_3</item>
         <item>@string/keyboard_height_4</item>
         <item>@string/keyboard_height_5</item>
+    </string-array>
+
+    <string-array name="footer_height_list">
+        <item>@string/footer_height_1</item>
+        <item>@string/footer_height_2</item>
+        <item>@string/footer_height_3</item>
+        <item>@string/footer_height_4</item>
+        <item>@string/footer_height_5</item>
     </string-array>
 </resources>

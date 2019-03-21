@@ -2,15 +2,15 @@
 <!-- NOTE:
     - this file is made automatically by (project-root)/tools/keyboard_layout.py:
         adjustment    -> for left hand
-        key height    -> $KEY_HEIGHT_INFO
-        footer height -> $FOOTER_INFO
+        key height    -> @dimen/key_height_semi_large (Lv.4)
+        footer height -> @dimen/footer_height_medium (Lv.3)
     - actual keymap is defined in KeymapController.kt
 -->
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="17%p"
     android:horizontalGap="0dp"
     android:verticalGap="0dp"
-    android:keyHeight="@dimen/$KEY_HEIGHT_VALUE"
+    android:keyHeight="@dimen/key_height_semi_large"
     android:isRepeatable="false">
 
     <Row android:keyHeight="5dp"/>
@@ -111,6 +111,6 @@
     </Row>
     <Row
         android:rowEdgeFlags="bottom"
-        android:keyHeight="@dimen/$FOOTER_VALUE"/>
+        android:keyHeight="@dimen/footer_height_medium"/>
 
 </Keyboard>

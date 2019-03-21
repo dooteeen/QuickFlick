@@ -3,7 +3,7 @@
     - this file is made automatically by (project-root)/tools/keyboard_layout.py:
         adjustment    -> for right hand
         key height    -> $KEY_HEIGHT_INFO
-        footer height -> $ORIENTATION_INFO
+        footer height -> $FOOTER_INFO
     - actual keymap is defined in KeymapController.kt
 -->
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
@@ -111,6 +111,6 @@
     </Row>
     <Row
         android:rowEdgeFlags="bottom"
-        android:keyHeight="$FOOTER_HEIGHT_DP"/>
+        android:keyHeight="@dimen/$FOOTER_VALUE"/>
 
 </Keyboard>
