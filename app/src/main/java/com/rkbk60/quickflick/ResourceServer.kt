@@ -133,4 +133,6 @@ class ResourceServer(context: Context) : ResourceServerBase(context) {
         }
         return backgrounds
     }
+
+    val keyText = colorResourceOf(R.color.keyText)
 }

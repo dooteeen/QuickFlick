@@ -2,11 +2,16 @@ package com.rkbk60.quickflick
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
+import android.support.annotation.ColorInt
 import android.support.v4.content.ContextCompat
+import android.support.v4.graphics.drawable.DrawableCompat
 import android.util.AttributeSet
 import com.rkbk60.quickflick.model.KeyIndex
 
@@ -69,8 +74,14 @@ class CustomKeyboardView(context: Context, attrs: AttributeSet) : KeyboardView(c
     fun setKeyboardWith(controller:  KeyboardController,
                         isRight:     Boolean,
                         footerLevel: Int,
-                        heightLevel: Int) {
-        keyboard = controller.inflateKeyboard(isRight, footerLevel, heightLevel)
+                        heightLevel: Int,
+                        @ColorInt textColor: Int) {
+        keyboard = controller.inflateKeyboard(isRight, footerLevel, heightLevel).apply {
+            keys.forEach {
+                DrawableCompat.setTint(it.icon ?: return@forEach, textColor)
+                DrawableCompat.setTintMode(it.icon, PorterDuff.Mode.SRC_IN)
+            }
+        }
         isLayoutForRightHand = isRight
     }
 

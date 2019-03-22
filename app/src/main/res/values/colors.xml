@@ -3,6 +3,7 @@
 
     <color name="backgroundKey">#000</color>
     <color name="pressedKey">#009688</color>
+    <color name="keyText">#FFFFFF</color>
     <color name="backgroundIndicator">#222</color>
     <color name="separator">#222</color>
     <color name="previewBackground">#1b1b1b</color>

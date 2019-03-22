@@ -60,7 +60,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
     override fun onCreateInputView(): View {
         keyboardView = layoutInflater.inflate(R.layout.keyboardview, null) as CustomKeyboardView
         return keyboardView.apply {
-            setKeyboardWith(keyboardController, isRight, footerLevel, heightLevel)
+            setKeyboardWith(keyboardController, isRight, footerLevel, heightLevel, rServer.keyText)
             isPreviewEnabled = false
             setOnCloseListener {
                 arrowKey.stopInput()
