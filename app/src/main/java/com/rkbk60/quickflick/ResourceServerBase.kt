@@ -84,11 +84,11 @@ abstract class ResourceServerBase(protected val context: Context) {
                                    private val candidates: Array<T>)
             where T : Enum<T>, T : ResourceEnum {
         val key = context.getString(keyId) ?: throw Error("failed to detect key string id")
-        val defaultString = resStringOf(default)
+        private val defaultString = resStringOf(default)
         private val candidateMap = candidates.map { Pair(it, resStringOf(it)) }
 
         /**
-         * Current preference value.
+         * Current preference value which type is kotlin Enum.
          */
         var current: T
             get() {
@@ -99,6 +99,13 @@ abstract class ResourceServerBase(protected val context: Context) {
                 if (!candidates.contains(value)) return
                 editor.putString(key, resStringOf(value)).commit()
             }
+
+        /**
+         * True current preference value.
+         */
+        var currentValue = defaultString
+            get() = resStringOf(current)
+            private set
 
         override fun toString(): String = "$key: $current(default: $default)"
 

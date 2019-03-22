@@ -114,28 +114,14 @@ class SettingsActivity: AppCompatActivity() {
 
         private fun updateKeyboardHeightSummary(target: KHeightPrefEnum = rServer.keyboardHeightPortrait) {
             val current = target.current
-            val subContent = when (current) {
-                ResourceServer.KeyboardHeight.Lv1 -> "smallest"
-                ResourceServer.KeyboardHeight.Lv2 -> "small"
-                ResourceServer.KeyboardHeight.Lv3 -> "medium"
-                ResourceServer.KeyboardHeight.Lv4 -> "large"
-                ResourceServer.KeyboardHeight.Lv5 -> "largest"
-            }
-            findPreference(target.key).summary =
-                    "Level ${current.toInt()} ($subContent)"
+            val value = target.currentValue.toLowerCase()
+            findPreference(target.key).summary = "Level ${current.toInt()} ($value)"
         }
 
         private fun updateFooterHeightSummary(target: FHeightPrefEnum = rServer.footerHeightPortrait) {
             val current = target.current
-            val subContent = when (current) {
-                ResourceServer.FooterHeight.Lv1 -> "60 thou"
-                ResourceServer.FooterHeight.Lv2 -> "120 thou"
-                ResourceServer.FooterHeight.Lv3 -> "180 thou"
-                ResourceServer.FooterHeight.Lv4 -> "240 thou"
-                ResourceServer.FooterHeight.Lv5 -> "360 thou"
-            }
-            findPreference(target.key).summary =
-                    "Level ${current.toInt()} ($subContent)"
+            val value = target.currentValue
+            findPreference(target.key).summary = "Level ${current.toInt()} ($value)"
         }
 
         private fun updateThemeSummary() {
