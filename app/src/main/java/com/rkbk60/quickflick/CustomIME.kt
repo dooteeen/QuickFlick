@@ -1,12 +1,14 @@
 package com.rkbk60.quickflick
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.inputmethodservice.InputMethodService
 import android.inputmethodservice.KeyboardView
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
+import android.view.inputmethod.InputMethodManager
 import com.rkbk60.quickflick.domain.*
 import com.rkbk60.quickflick.model.*
 
@@ -219,8 +221,6 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
             }
         }
 
-        // TODO: add action for TriggerKeyInfo.CHOOSE_KEYBOARD
-
         if (key is AsciiKeyInfo.DirectionKey) {
             if (arrowKey.isStandby || lastAction == MotionEvent.ACTION_UP) {
                 arrowKey.stopInput()
@@ -262,6 +262,11 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
         if (key === TriggerKeyInfo.KEYBOARD_LAYOUT) {
             isRight = !isRight
             setInputView(onCreateInputView())
+            return
+        }
+
+        if (key === TriggerKeyInfo.CHOOSE_KEYBOARD) {
+            (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).showInputMethodPicker()
             return
         }
     }

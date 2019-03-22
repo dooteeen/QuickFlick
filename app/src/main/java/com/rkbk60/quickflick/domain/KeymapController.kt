@@ -172,13 +172,14 @@ class KeymapController {
     }
 
     /**
-     * Defines AsciiKeyInfo.UnCharKey(except directions, MOVE_HOME/END, PAGE_UP/END) and ModKeyInfo to keymap.
+     * Defines AsciiKeyInfo.UnCharKey(except directions, MOVE_HOME/END, PAGE_UP/END), CHOOSE_KEYBOARD, and ModKeyInfo to keymap.
      */
     private fun generateUnCharKeymap() {
         keymap.apply {
             clear(KeyIndex.B1)
             put(KeyIndex.B1, Flick.Direction.NONE,  AsciiKeyInfo.ESCAPE)
-            // TODO: put TriggerKeyInfo.CHOOSE_KEYBOARD on up/down
+            put(KeyIndex.B1, Flick.Direction.UP,    TriggerKeyInfo.CHOOSE_KEYBOARD)
+            put(KeyIndex.B1, Flick.Direction.DOWN,  TriggerKeyInfo.CHOOSE_KEYBOARD)
             clear(KeyIndex.F1)
             put(KeyIndex.F1, Flick.Direction.NONE,  AsciiKeyInfo.TAB)
             put(KeyIndex.F1, Flick.Direction.LEFT,  AsciiKeyInfo.SHIFT_TAB)
