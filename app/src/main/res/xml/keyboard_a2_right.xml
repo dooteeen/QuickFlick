@@ -24,89 +24,89 @@
     <Row>
         <Key android:codes="1"
             android:keyWidth="15%p"
-            android:keyIcon="@drawable/keyicon_f1_3"
+            android:keyIcon="@mipmap/keyicon_f1_3"
             android:keyEdgeFlags="left"/>
         <Key
             android:codes="2"
-            android:keyIcon="@drawable/keyicon_escape"/>
+            android:keyIcon="@mipmap/keyicon_escape"/>
         <Key
             android:codes="3"
-            android:keyIcon="@drawable/keyicon_arrow_mode1"/>
+            android:keyIcon="@mipmap/keyicon_arrow_mode1"/>
         <Key
             android:codes="4"
-            android:keyIcon="@drawable/keyicon_0"/>
+            android:keyIcon="@mipmap/keyicon_0"/>
         <Key
             android:codes="5"
-            android:keyIcon="@drawable/keyicon_space"/>
+            android:keyIcon="@mipmap/keyicon_space"/>
         <Key
             android:codes="6"
-            android:keyIcon="@drawable/keyicon_tabenter"
+            android:keyIcon="@mipmap/keyicon_tabenter"
             android:keyEdgeFlags="right"/>
     </Row>
     <Row>
         <Key android:codes="8"
             android:keyWidth="15%p"
-            android:keyIcon="@drawable/keyicon_f4_6"
+            android:keyIcon="@mipmap/keyicon_f4_6"
             android:keyEdgeFlags="left"/>
         <Key
             android:codes="9"
-            android:keyIcon="@drawable/keyicon_meta_alt_off_off"/>
+            android:keyIcon="@mipmap/keyicon_meta_alt_off_off"/>
         <Key
             android:codes="10"
-            android:keyIcon="@drawable/keyicon_1"/>
+            android:keyIcon="@mipmap/keyicon_1"/>
         <Key
             android:codes="11"
-            android:keyIcon="@drawable/keyicon_2"/>
+            android:keyIcon="@mipmap/keyicon_2"/>
         <Key
             android:codes="12"
-            android:keyIcon="@drawable/keyicon_3"/>
+            android:keyIcon="@mipmap/keyicon_3"/>
         <Key
             android:codes="13"
-            android:keyIcon="@drawable/keyicon_delete"
+            android:keyIcon="@mipmap/keyicon_delete"
             android:keyEdgeFlags="right"/>
     </Row>
     <Row>
         <Key android:codes="15"
             android:keyWidth="15%p"
-            android:keyIcon="@drawable/keyicon_f7_9"
+            android:keyIcon="@mipmap/keyicon_f7_9"
             android:keyEdgeFlags="left"/>
         <Key
             android:codes="16"
-            android:keyIcon="@drawable/keyicon_ctrl_alt_off_off"/>
+            android:keyIcon="@mipmap/keyicon_ctrl_alt_off_off"/>
         <Key
             android:codes="17"
-            android:keyIcon="@drawable/keyicon_4"/>
+            android:keyIcon="@mipmap/keyicon_4"/>
         <Key
             android:codes="18"
-            android:keyIcon="@drawable/keyicon_5"/>
+            android:keyIcon="@mipmap/keyicon_5"/>
         <Key
             android:codes="19"
-            android:keyIcon="@drawable/keyicon_6"/>
+            android:keyIcon="@mipmap/keyicon_6"/>
         <Key
             android:codes="20"
-            android:keyIcon="@drawable/keyicon_backspace"
+            android:keyIcon="@mipmap/keyicon_backspace"
             android:keyEdgeFlags="right"/>
     </Row>
     <Row>
         <Key android:codes="22"
             android:keyWidth="15%p"
-            android:keyIcon="@drawable/keyicon_fa_c"
+            android:keyIcon="@mipmap/keyicon_fa_c"
             android:keyEdgeFlags="left"/>
         <Key
             android:codes="23"
-            android:keyIcon="@drawable/keyicon_brackets_left"/>
+            android:keyIcon="@mipmap/keyicon_brackets_left"/>
         <Key
             android:codes="24"
-            android:keyIcon="@drawable/keyicon_7"/>
+            android:keyIcon="@mipmap/keyicon_7"/>
         <Key
             android:codes="25"
-            android:keyIcon="@drawable/keyicon_8"/>
+            android:keyIcon="@mipmap/keyicon_8"/>
         <Key
             android:codes="26"
-            android:keyIcon="@drawable/keyicon_9"/>
+            android:keyIcon="@mipmap/keyicon_9"/>
         <Key
             android:codes="27"
-            android:keyIcon="@drawable/keyicon_brackets_right"
+            android:keyIcon="@mipmap/keyicon_brackets_right"
             android:keyEdgeFlags="right"/>
     </Row>
     <Row

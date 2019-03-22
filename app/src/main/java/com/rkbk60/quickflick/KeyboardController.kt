@@ -110,8 +110,8 @@ class KeyboardController(private val context: Context) {
         arrowKey?.apply {
             text = null
             icon = ContextCompat.getDrawable(context, when(mode) {
-                ArrowKey.Mode.DEFAULT   -> R.drawable.keyicon_arrow_mode1
-                ArrowKey.Mode.PAGE_MOVE -> R.drawable.keyicon_arrow_mode2
+                ArrowKey.Mode.DEFAULT   -> R.mipmap.keyicon_arrow_mode1
+                ArrowKey.Mode.PAGE_MOVE -> R.mipmap.keyicon_arrow_mode2
             })
         }
     }
@@ -129,31 +129,31 @@ class KeyboardController(private val context: Context) {
         metaAltKey?.apply {
             text = null
             icon = ContextCompat.getDrawable(context, when(10 * metaCode + altCode) {
-                22 -> R.drawable.keyicon_meta_alt_lock_lock
-                21 -> R.drawable.keyicon_meta_alt_lock_on
-                20 -> R.drawable.keyicon_meta_alt_lock_off
-                12 -> R.drawable.keyicon_meta_alt_on_lock
-                11 -> R.drawable.keyicon_meta_alt_on_on
-                10 -> R.drawable.keyicon_meta_alt_on_off
-                 2 -> R.drawable.keyicon_meta_alt_off_lock
-                 1 -> R.drawable.keyicon_meta_alt_off_on
-                 0 -> R.drawable.keyicon_meta_alt_off_off
-                else -> R.drawable.keyicon_meta_alt_off_off
+                22 -> R.mipmap.keyicon_meta_alt_lock_lock
+                21 -> R.mipmap.keyicon_meta_alt_lock_on
+                20 -> R.mipmap.keyicon_meta_alt_lock_off
+                12 -> R.mipmap.keyicon_meta_alt_on_lock
+                11 -> R.mipmap.keyicon_meta_alt_on_on
+                10 -> R.mipmap.keyicon_meta_alt_on_off
+                 2 -> R.mipmap.keyicon_meta_alt_off_lock
+                 1 -> R.mipmap.keyicon_meta_alt_off_on
+                 0 -> R.mipmap.keyicon_meta_alt_off_off
+                else -> R.mipmap.keyicon_meta_alt_off_off
             })
         }
         ctrlAltKey?.apply {
             text = null
             icon = ContextCompat.getDrawable(context, when(10 * ctrlCode + altCode) {
-                22 -> R.drawable.keyicon_ctrl_alt_lock_lock
-                21 -> R.drawable.keyicon_ctrl_alt_lock_on
-                20 -> R.drawable.keyicon_ctrl_alt_lock_off
-                12 -> R.drawable.keyicon_ctrl_alt_on_lock
-                11 -> R.drawable.keyicon_ctrl_alt_on_on
-                10 -> R.drawable.keyicon_ctrl_alt_on_off
-                 2 -> R.drawable.keyicon_ctrl_alt_off_lock
-                 1 -> R.drawable.keyicon_ctrl_alt_off_on
-                 0 -> R.drawable.keyicon_ctrl_alt_off_off
-                else -> R.drawable.keyicon_ctrl_alt_off_off
+                22 -> R.mipmap.keyicon_ctrl_alt_lock_lock
+                21 -> R.mipmap.keyicon_ctrl_alt_lock_on
+                20 -> R.mipmap.keyicon_ctrl_alt_lock_off
+                12 -> R.mipmap.keyicon_ctrl_alt_on_lock
+                11 -> R.mipmap.keyicon_ctrl_alt_on_on
+                10 -> R.mipmap.keyicon_ctrl_alt_on_off
+                 2 -> R.mipmap.keyicon_ctrl_alt_off_lock
+                 1 -> R.mipmap.keyicon_ctrl_alt_off_on
+                 0 -> R.mipmap.keyicon_ctrl_alt_off_off
+                else -> R.mipmap.keyicon_ctrl_alt_off_off
             })
         }
     }

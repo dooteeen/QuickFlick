@@ -60,8 +60,8 @@ if os.path.exists(tmp_dir):
     shutil.rmtree(tmp_dir)
 os.mkdir(tmp_dir)
 
-output_dirs = {'drawable-mdpi', 'drawable-hdpi', 'drawable-xhdpi',
-               'drawable-xxhdpi', 'drawable-xxxhdpi'}
+output_dirs = {'mipmap-mdpi', 'mipmap-hdpi', 'mipmap-xhdpi',
+               'mipmap-xxhdpi', 'mipmap-xxxhdpi'}
 for output_dir in output_dirs:
     output_dir = "%s/output/indicator/%s/" % (current_dir, output_dir)
     if not os.path.exists(output_dir):
