@@ -3,7 +3,6 @@ package com.rkbk60.quickflick
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.EditTextPreference
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.preference.PreferenceFragmentCompat
 import android.widget.Toast
@@ -100,12 +99,10 @@ class SettingsActivity: AppCompatActivity() {
                 if (newValue < minimal) {
                     toast("Minimal value is $minimal thou.")
                     target.also { it.current = minimal }
-                    (findPreference(target.key) as? EditTextPreference?)?.text = minimal.toString()
                 }
             } catch (_: java.lang.Exception) {
                 toast("Set default value.")
                 target.also { it.current = it.default }
-                (findPreference(target.key) as? EditTextPreference?)?.text = target.default.toString()
             }
         }
 
