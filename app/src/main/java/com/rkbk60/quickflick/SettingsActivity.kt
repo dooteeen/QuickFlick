@@ -1,16 +1,15 @@
 package com.rkbk60.quickflick
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.EditTextPreference
-import android.preference.PreferenceFragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.preference.PreferenceFragmentCompat
 import android.widget.Toast
 
 /**
  * Settings
- * TODO: replace to PreferenceFragmentCompat and getSupportFragmentManager
  */
 
 private typealias KHeightPrefEnum = ResourceServerBase.PreferenceEnum<ResourceServer.KeyboardHeight>
@@ -19,18 +18,21 @@ private typealias FHeightPrefEnum = ResourceServerBase.PreferenceEnum<ResourceSe
 class SettingsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fragmentManager.beginTransaction()
+        supportFragmentManager
+                .beginTransaction()
                 .replace(android.R.id.content, SettingsFragment())
                 .commit()
     }
 
     class SettingsFragment:
-            PreferenceFragment(),
+            PreferenceFragmentCompat(),
             SharedPreferences.OnSharedPreferenceChangeListener {
-        private val rServer by lazy { ResourceServer(activity.applicationContext) }
+        private val c: Context
+            get() = context ?: activity?.applicationContext ?: throw Exception("Failed to get context.")
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
+        private val rServer by lazy { ResourceServer(c) }
+
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
 //            PreferenceManager.getDefaultSharedPreferences(context)?.edit()?.clear()?.commit() // for debug
             addPreferencesFromResource(R.xml.preferences)
         }
@@ -98,12 +100,12 @@ class SettingsActivity: AppCompatActivity() {
                 if (newValue < minimal) {
                     toast("Minimal value is $minimal thou.")
                     target.also { it.current = minimal }
-                    (findPreference(target.key) as? EditTextPreference)?.text = minimal.toString()
+                    (findPreference(target.key) as? EditTextPreference?)?.text = minimal.toString()
                 }
             } catch (_: java.lang.Exception) {
                 toast("Set default value.")
                 target.also { it.current = it.default }
-                (findPreference(target.key) as? EditTextPreference)?.text = target.default.toString()
+                (findPreference(target.key) as? EditTextPreference?)?.text = target.default.toString()
             }
         }
 
@@ -130,7 +132,7 @@ class SettingsActivity: AppCompatActivity() {
         }
 
         private fun toast(s: String) {
-            Toast.makeText(activity.applicationContext, s, Toast.LENGTH_LONG).show()
+            Toast.makeText(c, s, Toast.LENGTH_LONG).show()
         }
 
     }
