@@ -9,9 +9,9 @@ android {
         applicationId "com.rkbk60.quickflick"
         minSdkVersion 19
         targetSdkVersion 28
-        versionName '2.1'
+        versionName '2.2'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 11
+        versionCode 12
     }
     buildTypes {
         release {
