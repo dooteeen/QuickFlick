@@ -10,6 +10,7 @@ DOCUMENT_CD_TARGET = ./../app/document
 
 .PHONY: debug
 debug: clean
+	rm -rf wiki/
 	@echo
 	@echo --- Dubug mode ON ---
 	@echo

@@ -26,7 +26,8 @@ os.chdir(current_dir)
 
 # clone wiki
 can_use_git = subprocess.run([
-    "ping github.com -c 1 > /dev/null 2>&1"
+    # "ping github.com -c 1 > /dev/null 2>&1"
+    "curl https://bitbucket.org/rkbk60/quickflick/wiki/ >/dev/null 2>&1"
 ], shell=True).returncode == 0
 if glob.glob("./wiki/*.md"):
     if can_use_git:
@@ -35,7 +36,8 @@ if glob.glob("./wiki/*.md"):
 else:
     if can_use_git:
         log("Clone wiki repository.")
-        git.Repo.clone_from("git@github.com:rkbk60/QuickFlick.wiki.git",
+        # git.Repo.clone_from("git@github.com:rkbk60/QuickFlick.wiki.git",
+        git.Repo.clone_from("git@bitbucket.org:rkbk60/quickflick.git/wiki",
                             current_dir + "/wiki")
     else:
         log("cannot clone wiki repository.")
