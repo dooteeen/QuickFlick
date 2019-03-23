@@ -2,6 +2,7 @@
 output
 tmp
 wiki
+github-markdown-css
 
 # for pipenv
 Pipfile.lock

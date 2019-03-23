@@ -28,6 +28,11 @@ release: clean \
 document.py:
 	$(PYTHON) $@ $(ARG_RELEASE)
 	cp ./output/document/*.html $(DOCUMENT_CD_TARGET)
+	@echo
+	@echo Download github-markdown-css.
+	-[ -d ./github-markdown-css ] \
+		&& git pull \
+		|| git clone https://github.com/sindresorhus/github-markdown-css
 	cp ./github-markdown-css/github-markdown.css $(DOCUMENT_CD_TARGET)
 
 .PHONY: document_image.py
