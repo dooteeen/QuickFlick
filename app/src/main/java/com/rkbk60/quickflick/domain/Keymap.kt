@@ -15,7 +15,7 @@ class Keymap {
     /**
      * Unless you set any KeyInfo, [getKey] will return this value.
      */
-    private val primaryKeyInfo: KeyInfo = KeyInfo.NULL
+    private val primaryKeyInfo: KeyInfo = KeyInfo.Null
 
     /**
      * Sets KeyInfo to keymap.

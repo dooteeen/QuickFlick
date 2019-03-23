@@ -16,10 +16,10 @@ class ModKeyStorage {
      * Current mod keys states.
      */
     private val states = mutableMapOf(
-            ModKeyInfo.CTRL  to State.OFF,
-            ModKeyInfo.ALT   to State.OFF,
-            ModKeyInfo.META  to State.OFF,
-            ModKeyInfo.SHIFT to State.OFF
+            ModKeyInfo.Ctrl  to State.OFF,
+            ModKeyInfo.Alt   to State.OFF,
+            ModKeyInfo.Meta  to State.OFF,
+            ModKeyInfo.Shift to State.OFF
     )
 
     /**
@@ -29,14 +29,14 @@ class ModKeyStorage {
      */
     fun update(mod: ModKeyInfo, isSubMod: Boolean = false) {
         val key = when (mod) {
-            ModKeyInfo.CTRL,
-            ModKeyInfo.CTRL_LOCK  -> ModKeyInfo.CTRL
-            ModKeyInfo.ALT,
-            ModKeyInfo.ALT_LOCK   -> ModKeyInfo.ALT
-            ModKeyInfo.META,
-            ModKeyInfo.META_LOCK  -> ModKeyInfo.META
-            ModKeyInfo.SHIFT,
-            ModKeyInfo.SHIFT_LOCK -> ModKeyInfo.SHIFT
+            ModKeyInfo.Ctrl,
+            ModKeyInfo.CtrlLock  -> ModKeyInfo.Ctrl
+            ModKeyInfo.Alt,
+            ModKeyInfo.AltLock   -> ModKeyInfo.Alt
+            ModKeyInfo.Meta,
+            ModKeyInfo.MetaLock  -> ModKeyInfo.Meta
+            ModKeyInfo.Shift,
+            ModKeyInfo.ShiftLock -> ModKeyInfo.Shift
         }
         /*
            It will be:
@@ -63,10 +63,10 @@ class ModKeyStorage {
         return states.filterValues { it != State.OFF }.map {
             if (it.value == State.LOCK)
                 when (it.key) {
-                    ModKeyInfo.CTRL  -> ModKeyInfo.CTRL_LOCK
-                    ModKeyInfo.ALT   -> ModKeyInfo.ALT_LOCK
-                    ModKeyInfo.META  -> ModKeyInfo.META_LOCK
-                    ModKeyInfo.SHIFT -> ModKeyInfo.SHIFT_LOCK
+                    ModKeyInfo.Ctrl  -> ModKeyInfo.CtrlLock
+                    ModKeyInfo.Alt   -> ModKeyInfo.AltLock
+                    ModKeyInfo.Meta  -> ModKeyInfo.MetaLock
+                    ModKeyInfo.Shift -> ModKeyInfo.ShiftLock
                     else -> it.key
                 }
             else

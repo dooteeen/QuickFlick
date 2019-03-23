@@ -4,11 +4,11 @@ package com.rkbk60.quickflick.model
  * KeyInfo to control application with keyboard action.
  */
 sealed class TriggerKeyInfo: KeyInfo() {
-    final override val mods = NULL.mods
+    final override val mods = Null.mods
 
-    object ARROWKEY_MODE : TriggerKeyInfo()
+    object ArrowKeyMode : TriggerKeyInfo()
 
-    object KEYBOARD_LAYOUT : TriggerKeyInfo()
+    object KeyboardLayout : TriggerKeyInfo()
 
-    object CHOOSE_KEYBOARD : TriggerKeyInfo()
+    object KeyboardApp : TriggerKeyInfo()
 }

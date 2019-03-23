@@ -9,8 +9,8 @@ import org.amshove.kluent.shouldBeIn
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
-private typealias AL = AsciiKeyInfo.LEFT
-private typealias AR = AsciiKeyInfo.RIGHT
+private typealias AL = AsciiKeyInfo.Left
+private typealias AR = AsciiKeyInfo.Right
 
 // This test is also one for RepeatingInputRunner because ArrowKey is wrapper of that.
 class ArrowKeyTest {

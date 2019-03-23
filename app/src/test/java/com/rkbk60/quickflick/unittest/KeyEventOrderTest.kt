@@ -9,9 +9,9 @@ import org.junit.Test
 private typealias Unit = KeyEventOrder.Unit
 
 class KeyEventOrderTest {
-    private val num1 = AsciiKeyInfo.NUM_1
-    private val meta = ModKeyInfo.META
-    private val ctrl = ModKeyInfo.CTRL
+    private val num1 = AsciiKeyInfo.Num1
+    private val meta = ModKeyInfo.Meta
+    private val ctrl = ModKeyInfo.Ctrl
 
     @Test
     fun `set only AsciiKeyInfo`() {
@@ -23,7 +23,7 @@ class KeyEventOrderTest {
 
     @Test
     fun `test when change main key`() {
-        KeyEventOrder(AsciiKeyInfo.ENTER, setOf()).apply {
+        KeyEventOrder(AsciiKeyInfo.Enter, setOf()).apply {
             changeMainKey(num1)
         }.toList() shouldEqual listOf(
                 Unit(true,  num1.code, 0),

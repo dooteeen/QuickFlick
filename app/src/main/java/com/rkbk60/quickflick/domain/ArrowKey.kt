@@ -54,7 +54,7 @@ class ArrowKey(private val sendKey: (KeyEventOrder) -> Unit) {
      * To run this, it needs that [mode] is Mode.Default and [key] is AsciiKeyInfo showing directions.
      * If you call when isStandby repeating input, this method do nothing.
      * You want to change key after call this, use [changeKeyInfo].
-     * @param key  LEFT/RIGHT/UP/DOWN AsciiKeyInfo.
+     * @param key  Left/Right/Up/Down AsciiKeyInfo.
      *             Other AsciiKeyInfo also can assign, but they will be ignored.
      * @param mods list of current enabled modifier keys
      */

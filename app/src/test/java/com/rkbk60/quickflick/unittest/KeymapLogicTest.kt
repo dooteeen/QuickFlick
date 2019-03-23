@@ -9,11 +9,11 @@ import org.junit.Test
 private typealias D = Flick.Direction
 
 class KeymapLogicTest {
-    private val nil = KeyInfo.NULL
-    private val lv0 = AsciiKeyInfo.NUM_0
-    private val lv1 = AsciiKeyInfo.NUM_1
-    private val lv2 = AsciiKeyInfo.NUM_2
-    private val lv3 = AsciiKeyInfo.NUM_3
+    private val nil = KeyInfo.Null
+    private val lv0 = AsciiKeyInfo.Num0
+    private val lv1 = AsciiKeyInfo.Num1
+    private val lv2 = AsciiKeyInfo.Num2
+    private val lv3 = AsciiKeyInfo.Num3
     private val keymap = Keymap().apply {
         put(0, D.NONE, lv0)
         put(0, D.LEFT, lv1)

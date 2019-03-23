@@ -90,8 +90,8 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
                         }?.also {
                             val key = keymap.getKey(it.codes[0], Flick.NONE)
                             when (key) {
-                                AsciiKeyInfo.FORWARD_DEL,
-                                AsciiKeyInfo.BACK_DEL -> {
+                                AsciiKeyInfo.ForwardDelete,
+                                AsciiKeyInfo.BackDelete -> {
                                     deleteInputRunner.startInput(key, modStorage.toSet())
                                 }
                             }
@@ -206,7 +206,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
     }
 
     private fun sendKey(key: KeyInfo, mods: Set<ModKeyInfo>) {
-        if (key === AsciiKeyInfo.ENTER && mods.isEmpty()) {
+        if (key === AsciiKeyInfo.Enter && mods.isEmpty()) {
             val editorAction = editorInfo.actionId.and(
                     EditorInfo.IME_MASK_ACTION or EditorInfo.IME_FLAG_NO_ENTER_ACTION)
             when (editorAction) {
@@ -228,7 +228,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
             }
         }
 
-        if (key === AsciiKeyInfo.FORWARD_DEL || key === AsciiKeyInfo.BACK_DEL) {
+        if (key === AsciiKeyInfo.ForwardDelete || key === AsciiKeyInfo.BackDelete) {
             if (doRepeatingDelete && lastAction == MotionEvent.ACTION_UP) {
                 doRepeatingDelete = false
                 deleteInputRunner.stopInput()
@@ -253,19 +253,19 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
             return
         }
 
-        if (key === TriggerKeyInfo.ARROWKEY_MODE) {
+        if (key === TriggerKeyInfo.ArrowKeyMode) {
             arrowKey.toggleMode()
             keymap.updateArrowKeymap(arrowKey.mode)
             keyboardController.updateArrowKeyFace(arrowKey.mode)
         }
 
-        if (key === TriggerKeyInfo.KEYBOARD_LAYOUT) {
+        if (key === TriggerKeyInfo.KeyboardLayout) {
             isRight = !isRight
             setInputView(onCreateInputView())
             return
         }
 
-        if (key === TriggerKeyInfo.CHOOSE_KEYBOARD) {
+        if (key === TriggerKeyInfo.KeyboardApp) {
             (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).showInputMethodPicker()
             return
         }

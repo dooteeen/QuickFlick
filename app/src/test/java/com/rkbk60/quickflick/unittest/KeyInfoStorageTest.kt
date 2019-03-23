@@ -17,19 +17,19 @@ class KeyInfoStorageTest {
     }
 
     @Test fun `checks when do nothing`() {
-        storage.output() shouldEqual Pair(KeyInfo.NULL, setOf())
+        storage.output() shouldEqual Pair(KeyInfo.Null, setOf())
     }
 
     @Test fun `checks SMALL_C`() {
-        val c = AsciiKeyInfo.SMALL_C
+        val c = AsciiKeyInfo.SmallC
         storage.input(c)
         storage.output() shouldEqual Pair(c, setOf())
     }
 
     @Test fun `checks SMALL_B, CTRL_LOCK, ALT_LOCK`() {
-        val b = AsciiKeyInfo.SMALL_B
-        val c = ModKeyInfo.CTRL_LOCK
-        val a = ModKeyInfo.ALT_LOCK
+        val b = AsciiKeyInfo.SmallB
+        val c = ModKeyInfo.CtrlLock
+        val a = ModKeyInfo.AltLock
         storage.input(b)
         storage.input(c)
         storage.input(a)
@@ -37,18 +37,18 @@ class KeyInfoStorageTest {
     }
 
     @Test fun `checks LARGE_A(contains SHIFT)`() {
-        val a = AsciiKeyInfo.LARGE_A
+        val a = AsciiKeyInfo.LargeA
         storage.input(a)
-        storage.output() shouldEqual Pair(a, setOf(ModKeyInfo.SHIFT))
+        storage.output() shouldEqual Pair(a, setOf(ModKeyInfo.Shift))
     }
 
     @Test fun `checks using a few times`() {
-        storage.input(KeyInfo.NULL)
-        storage.input(TriggerKeyInfo.KEYBOARD_LAYOUT)
+        storage.input(KeyInfo.Null)
+        storage.input(TriggerKeyInfo.KeyboardLayout)
         storage.output()
         storage.resetUnlessLock()
-        val sh = ModKeyInfo.SHIFT
-        val sp = AsciiKeyInfo.SPACE
+        val sh = ModKeyInfo.Shift
+        val sp = AsciiKeyInfo.Space
         storage.input(sh)
         storage.input(sp)
         storage.output() shouldEqual Pair(sp, setOf(sh))

@@ -5,7 +5,7 @@ import com.rkbk60.quickflick.model.AsciiKeyInfo
 import com.rkbk60.quickflick.model.KeyInfo
 import com.rkbk60.quickflick.model.ModKeyInfo
 
-class KeyEventOrder(private var key: KeyInfo = KeyInfo.NULL, mods: Set<ModKeyInfo> = setOf()) {
+class KeyEventOrder(private var key: KeyInfo = KeyInfo.Null, mods: Set<ModKeyInfo> = setOf()) {
 
     data class Unit(private val isDown: Boolean, val code: Int, val meta: Int) {
         fun toKeyEvent(time: Long): KeyEvent {
@@ -29,7 +29,7 @@ class KeyEventOrder(private var key: KeyInfo = KeyInfo.NULL, mods: Set<ModKeyInf
     }
 
     fun changeMainKey(key: KeyInfo) {
-        this.key = if (key is AsciiKeyInfo.Modifiable) key else KeyInfo.NULL
+        this.key = if (key is AsciiKeyInfo.Modifiable) key else KeyInfo.Null
         setMainInputOrders(key)
     }
 

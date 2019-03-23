@@ -23,7 +23,7 @@ class RepeatingInputRunner(val inputAtCalling: Boolean,
     }
 
     fun startInput(key: KeyInfo, mods: Set<ModKeyInfo>) {
-        if (isStandby || key === KeyInfo.NULL) return
+        if (isStandby || key === KeyInfo.Null) return
         isStandby = true
         order.changeKeys(key, mods)
         if (inputAtCalling) {

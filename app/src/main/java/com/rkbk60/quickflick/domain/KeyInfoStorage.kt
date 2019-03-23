@@ -9,9 +9,9 @@ import com.rkbk60.quickflick.model.ModKeyInfo
 class KeyInfoStorage {
     /**
      * Stocked KeyInfo object.
-     * This property will be KeyInfo.NULL, AsciiKeyInfo, or TriggerKeyInfo.
+     * This property will be KeyInfo.Null, AsciiKeyInfo, or TriggerKeyInfo.
      */
-    private var keyInfo: KeyInfo = KeyInfo.NULL
+    private var keyInfo: KeyInfo = KeyInfo.Null
 
     /**
      * Class to update and manage mod key states.
@@ -32,13 +32,13 @@ class KeyInfoStorage {
 
     /**
      * Returns current KeyInfo and set of enabled mod key.
-     * After call this method, inner [keyInfo] is changed to KeyInfo.NULL
+     * After call this method, inner [keyInfo] is changed to KeyInfo.Null
      * and modifier key states are turned off unless that LOCK.
      * @return Pair of KeyInfo and set of mod key.
      */
     fun output(): Pair<KeyInfo, Set<ModKeyInfo>> {
         val result = Pair(keyInfo, mods.toSet())
-        keyInfo = KeyInfo.NULL
+        keyInfo = KeyInfo.Null
         mods.resetUnlessLock()
         return result
     }
@@ -47,7 +47,7 @@ class KeyInfoStorage {
      * Resets keyInfo and each modifier key states to OFF.
      */
     fun resetUnlessLock() {
-        keyInfo = KeyInfo.NULL
+        keyInfo = KeyInfo.Null
         mods.resetUnlessLock()
     }
 
@@ -55,7 +55,7 @@ class KeyInfoStorage {
      * Resets keyInfo and each modifier key states to OFF.
      */
     fun reset() {
-        keyInfo = KeyInfo.NULL
+        keyInfo = KeyInfo.Null
         mods.reset()
     }
 }

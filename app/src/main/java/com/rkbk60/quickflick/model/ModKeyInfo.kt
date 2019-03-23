@@ -24,47 +24,47 @@ sealed class ModKeyInfo: KeyInfo() {
      */
     open val lockable = false
 
-    object SHIFT : ModKeyInfo() {
+    object Shift : ModKeyInfo() {
         override val code = KeyEvent.KEYCODE_SHIFT_LEFT
         override val meta = KeyEvent.META_SHIFT_ON or KeyEvent.META_SHIFT_LEFT_ON
     }
 
-    object SHIFT_LOCK : ModKeyInfo() {
-        override val code = SHIFT.code
-        override val meta = SHIFT.meta
+    object ShiftLock : ModKeyInfo() {
+        override val code = Shift.code
+        override val meta = Shift.meta
         override val lockable = true
     }
 
-    object CTRL : ModKeyInfo() {
+    object Ctrl : ModKeyInfo() {
         override val code = KeyEvent.KEYCODE_CTRL_LEFT
         override val meta = KeyEvent.META_CTRL_ON or KeyEvent.META_CTRL_LEFT_ON
     }
 
-    object CTRL_LOCK : ModKeyInfo() {
-        override val code = CTRL.code
-        override val meta = CTRL.meta
+    object CtrlLock : ModKeyInfo() {
+        override val code = Ctrl.code
+        override val meta = Ctrl.meta
         override val lockable = true
     }
 
-    object ALT : ModKeyInfo() {
+    object Alt : ModKeyInfo() {
         override val code = KeyEvent.KEYCODE_ALT_LEFT
         override val meta = KeyEvent.META_ALT_ON or KeyEvent.META_ALT_LEFT_ON
     }
 
-    object ALT_LOCK : ModKeyInfo() {
-        override val code = ALT.code
-        override val meta = ALT.meta
+    object AltLock : ModKeyInfo() {
+        override val code = Alt.code
+        override val meta = Alt.meta
         override val lockable = true
     }
 
-    object META : ModKeyInfo() {
+    object Meta : ModKeyInfo() {
         override val code = KeyEvent.KEYCODE_META_LEFT
         override val meta = KeyEvent.META_META_ON or KeyEvent.META_META_LEFT_ON
     }
 
-    object META_LOCK : ModKeyInfo() {
-        override val code = META.code
-        override val meta = META.meta
+    object MetaLock : ModKeyInfo() {
+        override val code = Meta.code
+        override val meta = Meta.meta
         override val lockable = true
     }
 

@@ -123,9 +123,9 @@ class KeyboardController(private val context: Context) {
      * @param mods set of modifier keys info that are enable now
      */
     fun updateModKeyFace(mods: Set<ModKeyInfo>) {
-        val metaCode = toCode(ModKeyInfo.META, mods)
-        val ctrlCode = toCode(ModKeyInfo.CTRL, mods)
-        val altCode  = toCode(ModKeyInfo.ALT,  mods)
+        val metaCode = toCode(ModKeyInfo.Meta, mods)
+        val ctrlCode = toCode(ModKeyInfo.Ctrl, mods)
+        val altCode  = toCode(ModKeyInfo.Alt,  mods)
         metaAltKey?.apply {
             text = null
             icon = ContextCompat.getDrawable(context, when(10 * metaCode + altCode) {

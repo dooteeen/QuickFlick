@@ -12,8 +12,8 @@ class ModStorageTest {
     private val storage = ModKeyStorage()
 
     private val off  = null
-    private val on   = ModKeyInfo.ALT
-    private val lock = ModKeyInfo.ALT_LOCK
+    private val on   = ModKeyInfo.Alt
+    private val lock = ModKeyInfo.AltLock
 
     @Before fun beforeEachTest() {
         storage.reset()
@@ -42,25 +42,25 @@ class ModStorageTest {
     }
 
     @Test fun `checks resetUnlessLock`() {
-        storage.update(ModKeyInfo.SHIFT)
-        storage.update(ModKeyInfo.ALT_LOCK)
-        storage.update(ModKeyInfo.CTRL_LOCK)
+        storage.update(ModKeyInfo.Shift)
+        storage.update(ModKeyInfo.AltLock)
+        storage.update(ModKeyInfo.CtrlLock)
         storage.resetUnlessLock()
-        storage.toSet() shouldEqual setOf(ModKeyInfo.ALT_LOCK, ModKeyInfo.CTRL_LOCK)
+        storage.toSet() shouldEqual setOf(ModKeyInfo.AltLock, ModKeyInfo.CtrlLock)
     }
 
     @Test fun `checks using a few times`() {
-        storage.update(ModKeyInfo.SHIFT, false)
+        storage.update(ModKeyInfo.Shift, false)
         storage.resetUnlessLock()
-        val m1 = ModKeyInfo.ALT
-        val m2 = ModKeyInfo.CTRL_LOCK
+        val m1 = ModKeyInfo.Alt
+        val m2 = ModKeyInfo.CtrlLock
         storage.apply {
             update(m1, false)
             update(m2, false)
             toSet() shouldEqual setOf(m1, m2)
             resetUnlessLock()
         }
-        val m3 = ModKeyInfo.SHIFT_LOCK
+        val m3 = ModKeyInfo.ShiftLock
         storage.update(m3, true)
         storage.toSet() shouldEqual setOf(m2, m3)
     }
