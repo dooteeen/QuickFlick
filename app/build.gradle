@@ -48,6 +48,11 @@ dependencies {
 //    testImplementation junit5.unitTests()
 //    testCompileOnly junit5.unitTestsRuntime()
 
+    // anko
+    implementation "org.jetbrains.anko:anko-commons:$ankoVersion"
+    implementation "org.jetbrains.anko:anko-sdk25:$ankoVersion"
+    implementation "org.jetbrains.anko:anko-appcompat-v7:$ankoVersion"
+
     // Kluent
     testImplementation "org.amshove.kluent:kluent-android:$kluentVersion"
 }
