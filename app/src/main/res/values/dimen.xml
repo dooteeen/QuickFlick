@@ -15,7 +15,7 @@
     <dimen name="footer_height_semi_small"
            tools:ignore="InOrMmUsage">0.12in</dimen>
     <dimen name="footer_height_medium"
-           tools:ignore="InOrMmUsage">40.18in</dimen>
+           tools:ignore="InOrMmUsage">0.18in</dimen>
     <dimen name="footer_height_semi_large"
            tools:ignore="InOrMmUsage">0.24in</dimen>
     <dimen name="footer_height_large"
