@@ -10,7 +10,17 @@ data class Flick(val direction: Direction, val distance: Int) {
     /**
      * Elements that show fling direction.
      */
-    enum class Direction { NONE, LEFT, RIGHT, UP, DOWN }
+    enum class Direction {
+        NONE, LEFT, RIGHT, UP, DOWN;
+
+        fun invert(): Direction = when(this) {
+            NONE -> NONE
+            LEFT -> RIGHT
+            RIGHT -> LEFT
+            UP -> DOWN
+            DOWN -> UP
+        }
+    }
 
     /**
      * flag that this [direction] and [distance] are valid values.

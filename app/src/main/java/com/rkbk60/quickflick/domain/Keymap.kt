@@ -76,6 +76,10 @@ class Keymap {
         return keymap.keys.map { keymap[it]?.getMaxDistance() ?: 0 }.max() ?: 0
     }
 
+    fun cloneElement(index: Int): ImmutableKeymapElement? {
+        return keymap[index]?.clone()
+    }
+
     private fun <K, V> MutableMap<K, V>.uncontainsKey(key: K): Boolean {
         return isEmpty() || !containsKey(key)
     }
@@ -154,6 +158,10 @@ class Keymap {
          */
         fun getMaxDistance(): Int {
             return listMap.keys.map { getMaxDistance(it) }.max() ?: 0
+        }
+
+        fun clone(): ImmutableKeymapElement {
+            return listMap.map { Pair(it.key, it.value.toList()) }.associate { it.first to it.second }
         }
     }
 }
