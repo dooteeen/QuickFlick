@@ -12,31 +12,40 @@ fun ImmutableKeymapElement.showCurrentInfo(flick: Flick): Map<Flick.Direction, K
         enumValues<Flick.Direction>().map {
             val value = this[it]?.getOrNull(0)
             if (value is KeyInfo && value !== KeyInfo.Null) {
-                result.put(it, value)
+                result[it] = value
             }
         }
+    } else if (this.keys == setOf(Flick.Direction.NONE)) {
+        val current = this[Flick.Direction.NONE]?.getOrNull(0)
+        if (current is KeyInfo && current !== KeyInfo.Null) {
+            result[Flick.Direction.NONE] = current
+        }
     } else if (this.containsKey(direction)) {
-        val index = flick.distance - 1
+        val index = Math.min(flick.distance - 1, this[direction]?.lastIndex ?: 0)
+
         val current = this[direction]?.getOrNull(index)
         if (current is KeyInfo && current !== KeyInfo.Null) {
-            result.put(Flick.Direction.NONE, current)
+            result[Flick.Direction.NONE] = current
         }
         val greater = this[direction]?.getOrNull(index + 1)
         if (greater is KeyInfo && greater !== KeyInfo.Null) {
-            result.put(direction, greater)
+            result[direction] = greater
         }
-        val less = if (flick.distance > 1) {
+        val less = if (index > 0) {
                        this[direction]?.getOrNull(index - 1)
                    } else {
                        this[Flick.Direction.NONE]?.getOrNull(0)
                    }
         if (less is KeyInfo && less !== KeyInfo.Null) {
-            result.put(direction.invert(), less)
+            result[direction.inverted] = less
         }
     } else {
-        val center = this[Flick.Direction.NONE]?.getOrNull(0)
-        if (center is KeyInfo && center !== KeyInfo.Null) {
-            result.put(direction.invert(), center)
+        // same to flick == Flick.Direction.NONE
+        enumValues<Flick.Direction>().map {
+            val value = this[it]?.getOrNull(0)
+            if (value is KeyInfo && value !== KeyInfo.Null) {
+                result[it] = value
+            }
         }
     }
     return result.toMap()

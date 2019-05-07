@@ -13,13 +13,14 @@ data class Flick(val direction: Direction, val distance: Int) {
     enum class Direction {
         NONE, LEFT, RIGHT, UP, DOWN;
 
-        fun invert(): Direction = when(this) {
-            NONE -> NONE
-            LEFT -> RIGHT
-            RIGHT -> LEFT
-            UP -> DOWN
-            DOWN -> UP
-        }
+        val inverted: Direction
+            get() = when(this) {
+                NONE  -> NONE
+                LEFT  -> RIGHT
+                RIGHT -> LEFT
+                UP    -> DOWN
+                DOWN  -> UP
+            }
     }
 
     /**

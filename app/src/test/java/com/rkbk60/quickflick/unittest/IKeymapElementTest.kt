@@ -5,6 +5,7 @@ import com.rkbk60.quickflick.domain.showCurrentInfo
 import com.rkbk60.quickflick.model.AsciiKeyInfo
 import com.rkbk60.quickflick.model.Flick
 import com.rkbk60.quickflick.model.KeyInfo
+import org.amshove.kluent.shouldBeEmpty
 import org.amshove.kluent.shouldEqual
 import org.junit.Test
 
@@ -30,12 +31,16 @@ class IKeymapElementTest {
     )
 
     private val bracketKey: ImmutableKeymapElement = mapOf(
-            Flick.Direction.NONE  to listOf<KeyInfo>(AsciiKeyInfo.ParenLeft),
-            Flick.Direction.LEFT  to listOf<KeyInfo>(
+            Flick.Direction.NONE to listOf<KeyInfo>(AsciiKeyInfo.ParenLeft),
+            Flick.Direction.LEFT to listOf<KeyInfo>(
                     AsciiKeyInfo.CurlyLeft,
                     AsciiKeyInfo.SquareLeft,
                     AsciiKeyInfo.Less
             )
+    )
+
+    private val deleteKey: ImmutableKeymapElement = mapOf(
+            Flick.Direction.NONE to listOf<KeyInfo>(AsciiKeyInfo.ForwardDelete)
     )
 
     @Test
@@ -48,13 +53,16 @@ class IKeymapElementTest {
                 Flick.Direction.UP    to AsciiKeyInfo.LargeU,
                 Flick.Direction.DOWN  to AsciiKeyInfo.LargeD
         )
-        bracketKey.showCurrentInfo(flick) shouldEqual mapOf (
-                Flick.Direction.NONE  to AsciiKeyInfo.ParenLeft,
-                Flick.Direction.LEFT  to AsciiKeyInfo.CurlyLeft
+        bracketKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE to AsciiKeyInfo.ParenLeft,
+                Flick.Direction.LEFT to AsciiKeyInfo.CurlyLeft
         )
-        empty1.showCurrentInfo(flick) shouldEqual mapOf()
-        empty2.showCurrentInfo(flick) shouldEqual mapOf()
-        empty3.showCurrentInfo(flick) shouldEqual mapOf()
+        deleteKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE to AsciiKeyInfo.ForwardDelete
+        )
+        empty1.showCurrentInfo(flick).shouldBeEmpty()
+        empty2.showCurrentInfo(flick).shouldBeEmpty()
+        empty3.showCurrentInfo(flick).shouldBeEmpty()
     }
 
     @Test
@@ -67,14 +75,17 @@ class IKeymapElementTest {
                 Flick.Direction.LEFT  to AsciiKeyInfo.SmallL,
                 Flick.Direction.RIGHT to AsciiKeyInfo.SmallC
         )
-        bracketKey.showCurrentInfo(flick) shouldEqual mapOf (
+        bracketKey.showCurrentInfo(flick) shouldEqual mapOf(
                 Flick.Direction.NONE  to AsciiKeyInfo.CurlyLeft,
                 Flick.Direction.LEFT  to AsciiKeyInfo.SquareLeft,
                 Flick.Direction.RIGHT to AsciiKeyInfo.ParenLeft
         )
-        empty1.showCurrentInfo(flick) shouldEqual mapOf()
-        empty2.showCurrentInfo(flick) shouldEqual mapOf()
-        empty3.showCurrentInfo(flick) shouldEqual mapOf()
+        deleteKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ForwardDelete
+        )
+        empty1.showCurrentInfo(flick).shouldBeEmpty()
+        empty2.showCurrentInfo(flick).shouldBeEmpty()
+        empty3.showCurrentInfo(flick).shouldBeEmpty()
     }
 
     @Test
@@ -84,16 +95,39 @@ class IKeymapElementTest {
         flick shouldEqual Flick(Flick.Direction.LEFT, 2)
         charKey.showCurrentInfo(flick) shouldEqual mapOf(
                 Flick.Direction.NONE  to AsciiKeyInfo.SmallL,
-                Flick.Direction.RIGHT to AsciiKeyInfo.LargeL // [LEFT][2-1]
+                Flick.Direction.RIGHT to AsciiKeyInfo.LargeL
         )
-        bracketKey.showCurrentInfo(flick) shouldEqual mapOf (
+        bracketKey.showCurrentInfo(flick) shouldEqual mapOf(
                 Flick.Direction.NONE  to AsciiKeyInfo.SquareLeft,
                 Flick.Direction.LEFT  to AsciiKeyInfo.Less,
                 Flick.Direction.RIGHT to AsciiKeyInfo.CurlyLeft
         )
-        empty1.showCurrentInfo(flick) shouldEqual mapOf()
-        empty2.showCurrentInfo(flick) shouldEqual mapOf()
-        empty3.showCurrentInfo(flick) shouldEqual mapOf()
+        deleteKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ForwardDelete
+        )
+        empty1.showCurrentInfo(flick).shouldBeEmpty()
+        empty2.showCurrentInfo(flick).shouldBeEmpty()
+        empty3.showCurrentInfo(flick).shouldBeEmpty()
+    }
+
+    @Test
+    fun `on Left(8)`() {
+        val flick = onLeft(8)
+        flick shouldEqual Flick(Flick.Direction.LEFT, 8)
+        charKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.SmallL,
+                Flick.Direction.RIGHT to AsciiKeyInfo.LargeL
+        )
+        bracketKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.Less,
+                Flick.Direction.RIGHT to AsciiKeyInfo.SquareLeft
+        )
+        deleteKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ForwardDelete
+        )
+        empty1.showCurrentInfo(flick).shouldBeEmpty()
+        empty2.showCurrentInfo(flick).shouldBeEmpty()
+        empty3.showCurrentInfo(flick).shouldBeEmpty()
     }
 
     @Test
@@ -106,12 +140,16 @@ class IKeymapElementTest {
                 Flick.Direction.LEFT  to AsciiKeyInfo.SmallC,
                 Flick.Direction.RIGHT to AsciiKeyInfo.SmallR
         )
-        bracketKey.showCurrentInfo(flick) shouldEqual mapOf (
-                Flick.Direction.LEFT  to AsciiKeyInfo.ParenLeft
+        bracketKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ParenLeft,
+                Flick.Direction.LEFT  to AsciiKeyInfo.CurlyLeft
         )
-        empty1.showCurrentInfo(flick) shouldEqual mapOf()
-        empty2.showCurrentInfo(flick) shouldEqual mapOf()
-        empty3.showCurrentInfo(flick) shouldEqual mapOf()
+        deleteKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ForwardDelete
+        )
+        empty1.showCurrentInfo(flick).shouldBeEmpty()
+        empty2.showCurrentInfo(flick).shouldBeEmpty()
+        empty3.showCurrentInfo(flick).shouldBeEmpty()
     }
 
     @Test
@@ -123,11 +161,36 @@ class IKeymapElementTest {
                 Flick.Direction.NONE  to AsciiKeyInfo.SmallR,
                 Flick.Direction.LEFT  to AsciiKeyInfo.LargeR
         )
-        bracketKey.showCurrentInfo(flick) shouldEqual mapOf (
-                Flick.Direction.LEFT  to AsciiKeyInfo.ParenLeft
+        bracketKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ParenLeft,
+                Flick.Direction.LEFT  to AsciiKeyInfo.CurlyLeft
         )
-        empty1.showCurrentInfo(flick) shouldEqual mapOf()
-        empty2.showCurrentInfo(flick) shouldEqual mapOf()
-        empty3.showCurrentInfo(flick) shouldEqual mapOf()
+        deleteKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ForwardDelete
+        )
+        empty1.showCurrentInfo(flick).shouldBeEmpty()
+        empty2.showCurrentInfo(flick).shouldBeEmpty()
+        empty3.showCurrentInfo(flick).shouldBeEmpty()
+    }
+
+    @Test
+    fun `on Right(8)`() {
+        // should be same to `on Right(2)`
+        val flick = onRight(8)
+        flick shouldEqual Flick(Flick.Direction.RIGHT, 8)
+        charKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.SmallR,
+                Flick.Direction.LEFT  to AsciiKeyInfo.LargeR
+        )
+        bracketKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ParenLeft,
+                Flick.Direction.LEFT  to AsciiKeyInfo.CurlyLeft
+        )
+        deleteKey.showCurrentInfo(flick) shouldEqual mapOf(
+                Flick.Direction.NONE  to AsciiKeyInfo.ForwardDelete
+        )
+        empty1.showCurrentInfo(flick).shouldBeEmpty()
+        empty2.showCurrentInfo(flick).shouldBeEmpty()
+        empty3.showCurrentInfo(flick).shouldBeEmpty()
     }
 }
