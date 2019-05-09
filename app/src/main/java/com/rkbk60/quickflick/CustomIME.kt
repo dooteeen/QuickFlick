@@ -3,6 +3,7 @@ package com.rkbk60.quickflick
 import android.annotation.SuppressLint
 import android.content.Context
 import android.inputmethodservice.InputMethodService
+import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
 import android.view.MotionEvent
 import android.view.View
@@ -27,6 +28,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
     private lateinit var flickFactory: FlickFactory
     private lateinit var multiTapManager: MultiTapManager
     private lateinit var arrowKey: ArrowKey
+    private val preview = PopupPreview()
 
     // repeating input helper for backspace/delete
     private var doRepeatingDelete = false
@@ -67,6 +69,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
             setOnCloseListener {
                 arrowKey.stopInput()
                 deleteInputRunner.stopInput()
+                preview.dismiss()
                 lastAction = MotionEvent.ACTION_UP
                 tapX = -1
                 tapY = -1
@@ -108,12 +111,14 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
                                 canInput = false
                                 onPressCode = KeyIndex.NOTHING
                                 flick = Flick.NONE
+                                preview.dismiss()
                             }
                             multiTapManager.canCancelFlick() -> {
                                 arrowKey.stopInput()
                                 tapX = x
                                 tapY = y
                                 flick = Flick.NONE
+                                preview.show(Flick.NONE, x, y)
                             }
                         }
                         indicateFlickState()
@@ -136,12 +141,16 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
                             }
 
                         }
+                        if (!multiTapManager.canCancelInput()) {
+                            preview.show(flick, x, y)
+                        }
                         indicateFlickState()
                         return@Listener true
                     }
                     MotionEvent.ACTION_UP -> {
                         arrowKey.stopInput()
                         deleteInputRunner.stopInput()
+                        preview.dismiss()
                         indicateFlickState()
                         multiTapManager.resetTapCount()
                         return@Listener false
@@ -170,11 +179,25 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
                 sendModifiableKeys(ic, order)
             }
         }
+
+        // keyboardView still not be inflated, so set observer to setup preview
+        keyboardView.viewTreeObserver?.apply {
+            addOnGlobalLayoutListener {
+                preview.setup(keyboardView, rServer.supplyPreviewColorSet(), isRight)
+            }
+        }
     }
 
     override fun onPress(primaryCode: Int) {
         onPressCode = primaryCode
         canInput = KeyIndex.isValid(primaryCode)
+        if (canInput) {
+            preview.standby(
+                    keyboardController.findKey(primaryCode) as Keyboard.Key,
+                    keymap.getElement(primaryCode),
+                    modStorage.toSet())
+            preview.show(flick, tapX, tapY)
+        }
         indicateFlickState()
     }
 
@@ -185,6 +208,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
         onPressCode = KeyIndex.NOTHING
         canInput = true
         flick = Flick.NONE
+        preview.dismiss()
         indicateFlickState()
     }
 

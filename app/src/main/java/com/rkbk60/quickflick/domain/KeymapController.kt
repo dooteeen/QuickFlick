@@ -55,6 +55,9 @@ class KeymapController {
     fun getMaxDistance(): Int =
             keymap.getMaxDistance()
 
+    fun getElement(index: Int): ImmutableKeymapElement =
+            keymap.cloneElement(index) ?: mapOf()
+
     /**
      * Defines AsciiKeyInfo.CharKey to keymap.
      */

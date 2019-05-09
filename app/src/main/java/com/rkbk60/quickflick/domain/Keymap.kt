@@ -161,7 +161,8 @@ class Keymap {
         }
 
         fun clone(): ImmutableKeymapElement {
-            return listMap.map { Pair(it.key, it.value.toList()) }.associate { it.first to it.second }
+            val cloneList = listMap.also { it[Flick.Direction.NONE] = mutableListOf(onTapKeyInfo) }
+            return cloneList.map { Pair(it.key, it.value.toList()) }.associate { it.first to it.second }
         }
     }
 }

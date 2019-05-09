@@ -96,7 +96,7 @@ class KeyboardController(private val context: Context) {
         return keyboard
     }
 
-    private fun findKey(index: Int): Key? {
+    fun findKey(index: Int): Key? {
         return keyboard?.keys?.find { it.codes[0] == index }
     }
 

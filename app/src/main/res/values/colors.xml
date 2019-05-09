@@ -6,8 +6,9 @@
     <color name="keyText">#FFFFFF</color>
     <color name="backgroundIndicator">#222</color>
     <color name="separator">#222</color>
-    <color name="previewBackground">#1b1b1b</color>
+    <color name="previewBackground">#313131</color>
     <color name="previewForward">#CCC</color>
+    <color name="previewSubForward">#888</color>
 
     <!-- theme Base -->
     <color name="themeBaseCenter">#4b4b4b</color>

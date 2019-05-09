@@ -134,5 +134,13 @@ class ResourceServer(context: Context) : ResourceServerBase(context) {
         return backgrounds
     }
 
+    fun supplyPreviewColorSet(): PopupPreviewUi.ColorSet {
+        return PopupPreviewUi.ColorSet(
+                mainText   = colorResourceOf(R.color.previewForward),
+                subText    = colorResourceOf(R.color.previewSubForward),
+                background = colorResourceOf(R.color.previewBackground)
+        )
+    }
+
     val keyText = colorResourceOf(R.color.keyText)
 }
