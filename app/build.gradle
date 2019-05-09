@@ -22,11 +22,6 @@ android {
     }
     productFlavors {
     }
-    sourceSets {
-        main {
-            assets.srcDirs = ['document']
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

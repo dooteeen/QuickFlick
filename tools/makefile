@@ -6,7 +6,7 @@ ARG_DEBUG = true
 ARG_RELEASE = false
 
 CP_TARGET = ./../app/src/main/res/
-DOCUMENT_CD_TARGET = ./../app/document
+DOCUMENT_CD_TARGET = ./../app/src/main/assets
 
 .PHONY: debug
 debug: clean

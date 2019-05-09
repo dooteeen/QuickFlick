@@ -1,6 +1,10 @@
 package com.rkbk60.quickflick
 
 import android.annotation.TargetApi
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
+import android.net.Uri
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -19,9 +23,9 @@ class DocumentActivity : AppCompatActivity() {
 
         val (title, file, zoomable) = when (intent.dataString) {
             baseContext.getString(R.string.intent_wiki) ->
-                Triple("QuickFlick Document", "Home.html", true)
+                Triple("QuickFlick Document", "src/main/assets/Home.html", true)
             baseContext.getString(R.string.intent_license) ->
-                Triple("License", "license.html", false)
+                Triple("License", "src/main/assets/licenses.html", false)
             else ->
                 Triple("Error", "404", false)
         }
@@ -33,7 +37,12 @@ class DocumentActivity : AppCompatActivity() {
                 object : WebViewClient() {
                     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
                     override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                        view?.loadUrl(request?.url?.toString())
+                        val url = request?.url?.toString() ?: return true
+                        if (url.startsWith("http")) {
+                            openDefaultBrowser(url)
+                        } else {
+                            view?.loadUrl(url)
+                        }
                         return true
                     }
                 }
@@ -41,7 +50,11 @@ class DocumentActivity : AppCompatActivity() {
                 object : WebViewClient() {
                     @Suppress("OverridingDeprecatedMember")
                     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                        view?.loadUrl(url)
+                        if (url?.startsWith("http") ?: return true) {
+                            openDefaultBrowser(url)
+                        } else {
+                            view?.loadUrl(url)
+                        }
                         return true
                     }
                 }
@@ -58,5 +71,19 @@ class DocumentActivity : AppCompatActivity() {
             }
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    private fun openDefaultBrowser(url: String) {
+        val browser = Intent(Intent.ACTION_VIEW, Uri.parse("https://"))
+        val defaultResInfo = packageManager.resolveActivity(browser, PackageManager.MATCH_DEFAULT_ONLY)
+        if (defaultResInfo is ResolveInfo) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            intent.setPackage(defaultResInfo.activityInfo.packageName)
+            try {
+                startActivity(intent)
+            } catch (_: Exception) {
+                return
+            }
+        }
     }
 }
