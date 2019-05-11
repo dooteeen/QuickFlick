@@ -50,7 +50,7 @@
     <string name="preferences_title_threshold_y1">1st horizontal threshold</string>
     <string name="preferences_title_threshold_y2">2nd horizontal threshold</string>
     <string name="preferences_title_cancel_flick">Flick reseter</string>
-    <string name="preferences_title_cancel_input">Input canceler</string>
+    <string name="preferences_title_cancel_input">Input canceller</string>
     <string name="preferences_title_assistant_preview">Use preview</string>
     <string name="preferences_title_keys_height">Height in portrait</string>
     <string name="preferences_title_keys_height_landscape">Height in landscape</string>
