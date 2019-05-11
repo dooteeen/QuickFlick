@@ -80,6 +80,27 @@ re_title = (VerEx().
             anything().
             regex())
 
+# detect tag name
+re_tag_name = (VerEx().
+               start_of_line().
+               find("<").
+               maybe("/").
+               word().
+               anything_but(">").
+               find(">").
+               anything().
+               regex())
+to_tag_name = r'\3'
+
+# delete surplus <br /> tags
+table_tags = ["table", "tr", "th", "td"]
+re_remove_br = (VerEx().
+                start_of_line().
+                find("<br />").
+                anything().
+                regex())
+to_remove_br = r'\2'
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
 output_dir = "output/document/"
 if not os.path.exists(output_dir):
@@ -121,10 +142,10 @@ for md in glob.glob('./wiki/*.md'):
         newline = re_fix_linkpath.sub(to_fix_linkpath, newline)
         newline = re_img2a.sub(to_img2a, newline)
         newtext += "\n" + newline
-    html = io.open(output_dir + basename + ".html", "w+", encoding='utf-8')
     context = markdown.markdown(
         newtext, extensions=[GithubFlavoredMarkdownExtension()])
     newcontext = u""
+    last_tag = "body"
     for newline in context.split("<"):
         if newline:
             newline = "<" + newline
@@ -135,8 +156,12 @@ for md in glob.glob('./wiki/*.md'):
                 target = target[1]
                 newline = newline.replace(
                     target, target.replace("-", " "))
+        if newline and last_tag in table_tags and re_remove_br.match(newline):
+            newline = "\n"
         newcontext += newline
+        last_tag = re_tag_name.sub(to_tag_name, newline)
     result = template.replace("$MARKDOWN", newcontext)
+    html = io.open(output_dir + basename + ".html", "w+", encoding='utf-8')
     html.write(result)
     html.close()
     log("generate: ./" + output_dir + basename + ".html")
