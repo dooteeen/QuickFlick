@@ -23,9 +23,9 @@ class DocumentActivity : AppCompatActivity() {
 
         val (title, file, zoomable) = when (intent.dataString) {
             baseContext.getString(R.string.intent_wiki) ->
-                Triple("QuickFlick Document", "src/main/assets/Home.html", true)
+                Triple("QuickFlick Document", "Home.html", true)
             baseContext.getString(R.string.intent_license) ->
-                Triple("License", "src/main/assets/licenses.html", false)
+                Triple("License", "licenses.html", false)
             else ->
                 Triple("Error", "404", false)
         }

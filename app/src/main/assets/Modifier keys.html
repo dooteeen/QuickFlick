@@ -10,6 +10,9 @@
             margin: 0 auto;
             padding: 15px;
         }
+        .markdown-body table tr:nth-child(2n) {
+            background-color: #fff;
+        }
     </style>
 </head>
 <body class="markdown-body">
@@ -21,22 +24,55 @@ This app does <em>NOT</em> provide Cut/Copy/Paste/Redo/Undo functions.</p>
 <h2>Mode</h2>
 <p>Each Modifier keys have 3 modes.</p>
 <ul>
-<li><strong>OFF</strong>: Default. do nothing.</li>
-<li><strong>ON</strong>: press modifier key once when you input char or number.<br />
-(ex. type:<code>&lt;Ctrl:ON&gt;abc</code> --&gt; <code>&lt;C-a&gt;bc</code>)</li>
-<li><strong>LOCK</strong>: keep pressing modifire key.<br />
-(ex. type:<code>&lt;Ctrl:LOCK&gt;abc</code> --&gt; <code>&lt;C-a&gt;&lt;C-b&gt;&lt;C-c&gt;</code>)</li>
+<li><strong>OFF</strong><ul>
+<li>default on start inputing.</li>
+<li>do nothing.</li>
+</ul>
+</li>
+<li><strong>ON</strong><ul>
+<li>press modifier key once when you input char or number.<br />
+  (ex. <code>&lt;Ctrl:ON&gt;abc</code> &gt; <code>&lt;C-a&gt;bc</code>)</li>
+</ul>
+</li>
+<li><strong>LOCK</strong><ul>
+<li>keep pressing modifire key.<br />
+ (ex. <code>&lt;Ctrl:LOCK&gt;abc</code> &gt; <code>&lt;C-a&gt;&lt;C-b&gt;&lt;C-c&gt;</code>)</li>
+</ul>
+</li>
 </ul>
 <h2>Control</h2>
-<p>See <a href="file:///android_asset/Keymap.html">Keymap</a>, and you may find that QucikFlick has two way to control modes.</p>
-<ul>
-<li><strong>Ctrl/Alt/Meta</strong>: toggle ON &lt;--> OFF (&lt;-- LOCK)</li>
-<li><strong>Ctrl/Alt/Meta Lock</strong>: toggle OFF &lt;--> LOCK (&lt;-- ON)</li>
-</ul>
+<p>There are 2 keymaps to control above modes.</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">from OFF</th>
+<th align="center">from ON</th>
+<th align="center">from LOCK</th>
+<th align="left">How to input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Mod-ON</strong></td>
+<td align="center">ON</td>
+<td align="center">off</td>
+<td align="center">off</td>
+<td align="left"><strong>Tap</strong>,<br><strong>Down</strong> Flick</td>
+</tr>
+<tr>
+<td align="left"><strong>Mod-LOCK</strong></td>
+<td align="center"><u>LOCK</u></td>
+<td align="center"><u>LOCK</u></td>
+<td align="center">off</td>
+<td align="left"><strong>Right</strong> Flick,<br><strong>Up</strong> Flick</td>
+</tr>
+</tbody>
+</table>
 <h2>Check mode</h2>
 <p>If these keys turn ON, key label changes lower to upper. <br />
 (Meta: m--&gt;M, Ctrl: c--&gt;C, Alt: a--&gt;A)  </p>
 <p>If LOCK mode, add <u>underbar</u>.<br />
-(ex. CtrlON: C, CtrlLOCK: <u>C</u>)</p>
+(ex. Ctrl-ON: C, Ctrl-LOCK: <u>C</u>)</p>
 </body>
 </html>

@@ -10,12 +10,14 @@
             margin: 0 auto;
             padding: 15px;
         }
+        .markdown-body table tr:nth-child(2n) {
+            background-color: #fff;
+        }
     </style>
 </head>
 <body class="markdown-body">
 <h1>How to Input</h1>
-<p>You can input with tap or flick.<br />
-If you want to check keymap, see <a href="file:///android_asset/Keymap.html">Here</a>.</p>
+<p>In this app, you can input with tap or flick.  </p>
 <p><a id="1"></a></p>
 <h2>Multi phase flick</h2>
 <p>On flick input, QuickFlick calculates distance level in response to distance from first tap point, and detects internal keycode to input in accordance with distance level. <br />
@@ -31,8 +33,12 @@ Indicator shows direction with hue, distance level with transparent of color.  <
 QuickFlick has now two functions to control input.</p>
 <ul>
 <li><strong>Flick reseter</strong>: Reset flicking state with multi tap.</li>
-<li><strong>Input canceler</strong>: Cancel input with twice tap.</li>
+<li><strong>Input canceller</strong>: Cancel input with twice tap.</li>
 </ul>
-<p>These functions are able to toggle on-off in <a href="file:///android_asset/Settings.html#2">Settings &gt; Multi tap settings</a></p>
+<p>These functions are able to toggle on-off in <a href="file:///android_asset/Settings.html#2">Settings &gt; Multi tap settings</a>.</p>
+<p><a id="3"></a></p>
+<h3>Popup preview</h3>
+<p>QuickFlick has a function to preview character or function dynamically with popup. If you are new to this keyboard, I strongly recommend you to use this feature.</p>
+<p>This function is able to toggle to show in <a href="file:///android_asset/Settings.html#3">Settings &gt; Input assistant</a>.</p>
 </body>
 </html>
