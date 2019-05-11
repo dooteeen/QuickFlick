@@ -15,6 +15,7 @@ class ResourceServer(context: Context) : ResourceServerBase(context) {
     val thresholdY2 = PreferenceIntText(R.string.preferences_y2, 120)
     val canCancelFlick = PreferenceBool(R.string.preferences_cancel_flick, true)
     val canCancelInput = PreferenceBool(R.string.preferences_cancel_input, false)
+    val usePreview     = PreferenceBool(R.string.preferences_assistant_preview, true)
     val keyboardIsRight = PreferenceBool(R.string.preferences_keys_adjustment, false)
 
     val isPortrait: Boolean

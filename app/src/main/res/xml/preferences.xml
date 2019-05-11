@@ -49,6 +49,13 @@
             android:title="@string/preferences_title_cancel_input"/>
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/preferences_category_assistant">
+        <SwitchPreference
+            android:defaultValue="@bool/preferences_assistant_preview"
+            android:key="@string/preferences_assistant_preview"
+            android:title="@string/preferences_title_assistant_preview"/>
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/preferences_category_appearance">
         <ListPreference
             android:defaultValue="@string/theme_base"

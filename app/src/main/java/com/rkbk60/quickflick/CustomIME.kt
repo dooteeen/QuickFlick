@@ -28,7 +28,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
     private lateinit var flickFactory: FlickFactory
     private lateinit var multiTapManager: MultiTapManager
     private lateinit var arrowKey: ArrowKey
-    private val preview = PopupPreview()
+    private val preview by lazy { if (rServer.usePreview.current) PopupPreview() else null }
 
     // repeating input helper for backspace/delete
     private var doRepeatingDelete = false
@@ -69,7 +69,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
             setOnCloseListener {
                 arrowKey.stopInput()
                 deleteInputRunner.stopInput()
-                preview.dismiss()
+                preview?.dismiss()
                 lastAction = MotionEvent.ACTION_UP
                 tapX = -1
                 tapY = -1
@@ -111,14 +111,14 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
                                 canInput = false
                                 onPressCode = KeyIndex.NOTHING
                                 flick = Flick.NONE
-                                preview.dismiss()
+                                preview?.dismiss()
                             }
                             multiTapManager.canCancelFlick() -> {
                                 arrowKey.stopInput()
                                 tapX = x
                                 tapY = y
                                 flick = Flick.NONE
-                                preview.show(Flick.NONE, x, y)
+                                preview?.show(Flick.NONE, x, y)
                             }
                         }
                         indicateFlickState()
@@ -142,7 +142,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
 
                         }
                         if (!multiTapManager.canCancelInput()) {
-                            preview.show(flick, x, y)
+                            preview?.show(flick, x, y)
                         }
                         indicateFlickState()
                         return@Listener true
@@ -150,7 +150,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
                     MotionEvent.ACTION_UP -> {
                         arrowKey.stopInput()
                         deleteInputRunner.stopInput()
-                        preview.dismiss()
+                        preview?.dismiss()
                         indicateFlickState()
                         multiTapManager.resetTapCount()
                         return@Listener false
@@ -183,7 +183,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
         // keyboardView still not be inflated, so set observer to setup preview
         keyboardView.viewTreeObserver?.apply {
             addOnGlobalLayoutListener {
-                preview.setup(keyboardView, rServer.supplyPreviewColorSet(), isRight)
+                preview?.setup(keyboardView, rServer.supplyPreviewColorSet(), isRight)
             }
         }
     }
@@ -192,11 +192,11 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
         onPressCode = primaryCode
         canInput = KeyIndex.isValid(primaryCode)
         if (canInput) {
-            preview.standby(
+            preview?.standby(
                     keyboardController.findKey(primaryCode) as Keyboard.Key,
                     keymap.getElement(primaryCode),
                     modStorage.toSet())
-            preview.show(flick, tapX, tapY)
+            preview?.show(flick, tapX, tapY)
         }
         indicateFlickState()
     }
@@ -208,7 +208,7 @@ class CustomIME : InputMethodService(), KeyboardView.OnKeyboardActionListener {
         onPressCode = KeyIndex.NOTHING
         canInput = true
         flick = Flick.NONE
-        preview.dismiss()
+        preview?.dismiss()
         indicateFlickState()
     }
 

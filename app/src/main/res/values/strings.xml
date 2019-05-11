@@ -28,6 +28,7 @@
     <string name="preferences_y2">threshold_y2</string>
     <string name="preferences_cancel_flick">cancel_flick</string>
     <string name="preferences_cancel_input">cancel_input</string>
+    <string name="preferences_assistant_preview">popup_preview</string>
     <string name="preferences_keyboard_height">keyboard_height</string>
     <string name="preferences_keyboard_height_landscape">keyboard_height_landscape</string>
     <string name="preferences_keyboard_footer_size">footer_height</string>
@@ -39,6 +40,7 @@
     <string name="preferences_category_horizontal">Horizontal flick sensitivity</string>
     <string name="preferences_category_vertical">Vertical flick sensitivity</string>
     <string name="preferences_category_canceler">Multi tap settings</string>
+    <string name="preferences_category_assistant">Input assistant</string>
     <string name="preferences_category_appearance">Appearance</string>
     <string name="preferences_category_others">others</string>>
     <string name="preferences_title_wiki">Offline help</string>
@@ -49,6 +51,7 @@
     <string name="preferences_title_threshold_y2">2nd horizontal threshold</string>
     <string name="preferences_title_cancel_flick">Flick reseter</string>
     <string name="preferences_title_cancel_input">Input canceler</string>
+    <string name="preferences_title_assistant_preview">Use preview</string>
     <string name="preferences_title_keys_height">Height in portrait</string>
     <string name="preferences_title_keys_height_landscape">Height in landscape</string>
     <string name="preferences_title_keyboard_footer_size">Footer height in portrait</string>
