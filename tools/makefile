@@ -2,7 +2,7 @@
 
 PYTHON = pipenv run python
 
-EXISTS_VENV = [ -d ./venv ]
+EXISTS_VENV = test -d ./venv
 
 ARG_DEBUG = true
 ARG_RELEASE = false
@@ -13,10 +13,10 @@ DOCUMENT_CD_TARGET = ./../app/src/main/assets
 .PHONY: help
 help:
 	@echo "Tasks"
-	@echo "  - setup   : setup pipenv environment"
-	@echo "  - debug   : run all scripts with debug mode."
-	@echo "  - release : run all scripts with release mode."
-	@echo "  - ***.py  : run selected script with release mode."
+	@echo "  - setup      : setup/update pipenv environment"
+	@echo "  - debug      : run all scripts with debug mode."
+	@echo "  - release    : run all scripts with release mode."
+	@echo "  - ***.py     : run selected script with release mode."
 	@echo "Requires"
 	@echo "  - Pipenv ('pipenv' command)"
 	@echo "  - Cairo"
@@ -24,7 +24,9 @@ help:
 .PHONY: setup
 setup:
 	export PIPENV_VENV_IN_PROJECT=true
-	-$(EXISTS_VENV) && pipenv update || pipenv install
+	$(EXISTS_VENV) && pipenv clean && pipenv update || pipenv install
+	@echo
+	pipenv graph
 
 .PHONY: debug
 debug: clean
