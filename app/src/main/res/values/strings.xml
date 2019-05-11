@@ -44,7 +44,7 @@
     <string name="preferences_category_appearance">Appearance</string>
     <string name="preferences_category_others">others</string>>
     <string name="preferences_title_wiki">Offline help</string>
-    <string name="preferences_title_license">License</string>
+    <string name="preferences_title_license">Licenses</string>
     <string name="preferences_title_threshold_x1">1st horizontal threshold</string>
     <string name="preferences_title_threshold_x2">2nd horizontal threshold</string>
     <string name="preferences_title_threshold_y1">1st horizontal threshold</string>

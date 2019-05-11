@@ -25,7 +25,7 @@ class DocumentActivity : AppCompatActivity() {
             baseContext.getString(R.string.intent_wiki) ->
                 Triple("QuickFlick Document", "Home.html", true)
             baseContext.getString(R.string.intent_license) ->
-                Triple("License", "licenses.html", false)
+                Triple("Licenses", "licenses.html", false)
             else ->
                 Triple("Error", "404", false)
         }
