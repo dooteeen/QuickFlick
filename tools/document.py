@@ -8,6 +8,7 @@ import markdown
 import os
 import subprocess
 import sys
+from mdx_gfm import GithubFlavoredMarkdownExtension
 
 
 DEBUG_MODE = json.loads(sys.argv[1].lower())
@@ -121,7 +122,8 @@ for md in glob.glob('./wiki/*.md'):
         newline = re_img2a.sub(to_img2a, newline)
         newtext += "\n" + newline
     html = io.open(output_dir + basename + ".html", "w+", encoding='utf-8')
-    context = markdown.markdown(newtext)
+    context = markdown.markdown(
+        newtext, extensions=[GithubFlavoredMarkdownExtension()])
     newcontext = u""
     for newline in context.split("<"):
         if newline:

@@ -10,8 +10,8 @@ name = "pypi"
 [packages]
 cairosvg = "*"
 verbalexpressions = "*"
-markdown = "*"
 gitpython = "*"
+py-gfm = "*"
 
 [requires]
 python_version = "3.6"
