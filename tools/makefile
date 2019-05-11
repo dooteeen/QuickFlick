@@ -27,7 +27,7 @@ setup:
 	-$(EXISTS_VENV) && pipenv update || pipenv install
 
 .PHONY: debug
-debug: clean setup
+debug: clean
 	rm -rf wiki/
 	@echo
 	@echo --- Dubug mode ON ---
@@ -36,11 +36,10 @@ debug: clean setup
 	-$(PYTHON) keyboard_layout.py $(ARG_DEBUG)
 	-$(PYTHON) keyicon.py $(ARG_DEBUG)
 	-$(PYTHON) document.py $(ARG_DEBUG)
-	-$(PYTHON) document_image.py $(ARG_DEBUG)
 
 .PHONY: release
 release: clean \
- document.py document_image.py indicator_morse.py keyboard_layout.py keyicon.py
+ document.py indicator_morse.py keyboard_layout.py keyicon.py
 
 .PHONY: document.py
 document.py:
@@ -52,11 +51,6 @@ document.py:
 		&& git pull \
 		|| git clone https://github.com/sindresorhus/github-markdown-css
 	cp ./github-markdown-css/github-markdown.css $(DOCUMENT_CD_TARGET)
-
-.PHONY: document_image.py
-document_image.py:
-	$(PYTHON) $@ $(ARG_RELEASE)
-	cp ./output/document_image/* $(DOCUMENT_CD_TARGET)
 
 .PHONY: indicator_morse.py
 indicator_morse.py:
