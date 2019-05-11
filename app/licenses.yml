@@ -1,4 +1,38 @@
 
+# sorted by:
+#   - non-jvm-projects
+#   - jvm libraries added by author
+#   - jvm libraries added by gradle automatically
+#     invisible jvm libraries
+
+- name: GitHub Markdown CSS
+  author: Sindre Sorhus
+  license: MIT License
+  licenseUrl: https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/license
+  url: https://github.com/sindresorhus/github-markdown-css
+  forceGenerate: true
+
+- name: Roboto Mono Nerd Font Complete.ttf
+  author: Ryan L McIntyre
+  license: MIT License
+  licenseUrl: https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/LICENSE
+  url: https://github.com/ryanoasis/nerd-fonts
+  forceGenerate: true
+
+- artifact: com.os.operando.guild.kt:guild_kt:+
+  name: Guild
+  author: Shinobu Okano
+  license: The Apache Software License, Version 2.0
+  licenseUrl: https://raw.githubusercontent.com/operando/Guild/master/LICENSE.txt
+  url: https://github.com/operando/Guild
+
+- artifact: org.jetbrains.anko:anko:+
+  name: anko
+  copyrightHolder: JetBrains Team
+  license: The Apache Software License, Version 2.0
+  licenseUrl: http://www.apache.org/license/LICENSE-2.0.txt
+  url: https://github.com/JetBrains/anko
+
 - artifact: com.android.support:support-media-compat:+
   name: Android Support Library media compat
   copyrightHolder: The Android Open Source Project
@@ -183,13 +217,6 @@
   licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.txt
   url: http://developer.android.com/tools/extras/support-library.html
 
-- artifact: com.os.operando.guild.kt:guild_kt:+
-  name: Guild
-  author: Shinobu Okano
-  license: The Apache Software License, Version 2.0
-  licenseUrl: https://raw.githubusercontent.com/operando/Guild/master/LICENSE.txt
-  url: https://github.com/operando/Guild
-
 - artifact: com.android.support:recyclerview-v7:+
   name: Android Support RecyclerView v7
   copyrightHolder: The Android Open Source Project
@@ -256,13 +283,6 @@
   licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.txt
   url: http://developer.android.com/tools/extras/support-library.html
 
-- artifact: org.jetbrains.anko:anko:+
-  name: anko
-  copyrightHolder: JetBrains Team
-  license: The Apache Software License, Version 2.0
-  licenseUrl: http://www.apache.org/license/LICENSE-2.0.txt
-  url: https://github.com/JetBrains/anko
-
 - artifact: org.jetbrains.anko:anko-support-v4:+
   skip: true
 
@@ -313,13 +333,6 @@
 
 - artifact: org.jetbrains.anko:anko-sqlite:+
   skip: true
-
-- name: github-markdown-css
-  author: Sindre Sorhus
-  license: MIT License
-  licenseUrl: https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/license
-  url: https://github.com/sindresorhus/github-markdown-css
-  forceGenerate: true
 
 - artifact: android.arch.lifecycle:runtime:+
   name: Android Lifecycle Runtime
