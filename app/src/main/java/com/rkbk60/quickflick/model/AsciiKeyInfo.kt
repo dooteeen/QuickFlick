@@ -533,7 +533,7 @@ sealed class AsciiKeyInfo : KeyInfo() {
     object Semicolon : CharKey(), Modifiable {
         override val char = ';'
         override val code = KeyEvent.KEYCODE_SEMICOLON
-        override val preview = Preview("\"")
+        override val preview = Preview(";")
     }
 
     object Ditto : CharKey() {
