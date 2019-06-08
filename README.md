@@ -21,6 +21,7 @@ MIT License
 
 ## TODO
 **must**
+
 * ~~dynamic preview~~
 * ~~refactor app~~
 * ~~add unit test~~
@@ -30,6 +31,7 @@ MIT License
 * ~~offline document(wiki)~~
 
 **maybe**
+
 * ~~keyboard footer on landscape~~
 * lockable Shift key
 * user-defined background theme
