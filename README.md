@@ -21,17 +21,16 @@ MIT License
 
 ## TODO
 **must**
-* dynamic preview
-* refactor app
-* add unit test
+* ~~dynamic preview~~
+* ~~refactor app~~
+* ~~add unit test~~
 * add ui tests
-* change keyboard height
+* ~~change keyboard height~~
 * first-run-tutorial
-* offline document(wiki)
-* check multi-modified-key behavior
+* ~~offline document(wiki)~~
 
 **maybe**
-* keyboard footer on landscape
+* ~~keyboard footer on landscape~~
 * lockable Shift key
 * user-defined background theme
 * user-defined indicator theme

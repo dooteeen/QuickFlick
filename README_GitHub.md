@@ -24,14 +24,13 @@ MIT License
 
 ## TODO
 **must**
-* [ ] dynamic preview
+* [x] dynamic preview
 * [x] refactor app
 * [x] add unit test
 * [ ] add ui tests
 * [x] change keyboard height
 * [ ] first-run-tutorial
 * [x] offline document(wiki)
-* [ ] check multi-modified-key behavior
 
 **maybe**
 * [x] keyboard footer on landscape
